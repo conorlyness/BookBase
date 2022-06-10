@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   constructor() {}
-  title = 'bookApp';
+  showFiller = false;
   bookName?: string;
 
   ngOnInit(): void {}
 
-  onSubmit() {}
+  onSubmit() {
+    console.log('test');
+  }
 }

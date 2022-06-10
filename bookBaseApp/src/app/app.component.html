@@ -1,16 +1,18 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
-    <div class="search">
-      <form #form="ngForm" (submit)="onSubmit()">
-        <input
-          type="text"
-          placeholder="Search Books"
-          name="book"
-          [(ngModel)]="bookName"
-        />
-      </form></div
-  ></mat-drawer>
-  <mat-drawer-content>Main content</mat-drawer-content>
-</mat-drawer-container>
+<div class="title">
+  <h1>Book Base</h1>
+</div>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="search">
+    <form #form="ngForm" (submit)="onSubmit()" class="search-form">
+      <input
+        type="text"
+        placeholder="Search Books"
+        name="book"
+        [(ngModel)]="bookName"
+      />
+    </form>
+  </div>
+
+  <div class="mainContent"></div>
+</div>
