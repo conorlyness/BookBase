@@ -7,12 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   constructor() {}
-  showFiller = false;
-  bookName?: string;
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    console.log('test');
+  displaySearchTerm(searchInput: string) {
+    console.log(searchInput);
   }
 }

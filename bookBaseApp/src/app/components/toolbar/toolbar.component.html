@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <span class="title">Book Base</span>
+  <span class="example-spacer"></span>
+  <div class="search">
+    <input
+      #newSearch
+      (change)="onSubmit(newSearch.value)"
+      type="text"
+      placeholder="Search Books"
+      name="book"
+    />
+  </div>
+</mat-toolbar>

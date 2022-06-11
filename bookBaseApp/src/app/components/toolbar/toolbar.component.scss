@@ -1,0 +1,35 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.search {
+  text-align: center;
+  font-size: large;
+}
+
+.search input {
+  background-color: rgba(179, 81, 236, 0.863);
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 1em;
+  color: rgb(255, 255, 255);
+  font-size: 0.8em;
+  text-align: center;
+}
+
+mat-toolbar {
+  background-color: black;
+}
+
+.title {
+  color: white;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.733);
+}
