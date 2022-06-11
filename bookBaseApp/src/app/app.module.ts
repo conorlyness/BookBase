@@ -12,8 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { HomeComponent } from './components/home/home.component';
 @NgModule({
-  declarations: [AppComponent, ToolbarComponent],
+  declarations: [AppComponent, ToolbarComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatToolbarModule,
     MatSnackBarModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

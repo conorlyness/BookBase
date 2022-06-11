@@ -1,0 +1,27 @@
+<!-- home component -->
+<div class="filters">
+  <mat-form-field>
+    <mat-label>Sort</mat-label>
+    <mat-select panelClass="sort-select" [(ngModel)]="sort">
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="year">Year</mat-option>
+      <mat-option value="rating">Rating</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="books">
+  <div class="book">
+    <div class="book-thumb-container">
+      <img
+        src="https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=754&fit=clip"
+        alt="thumbnail"
+        class="book-thumbnail"
+      />
+    </div>
+    <div class="book-description">
+      <p class="book-name"></p>
+    </div>
+  </div>
+</div>
+<!-- end of home component -->
