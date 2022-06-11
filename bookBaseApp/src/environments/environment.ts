@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  weeklyBooksByGenreUrl: 'https://hapi-books.p.rapidapi.com/week/',
+  booksByNameUrl: 'https://hapi-books.p.rapidapi.com/search/',
+  booksByIdUrl: 'https://hapi-books.p.rapidapi.com/book/',
+  XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
+  XRapidAPIHostHeadervalue: 'hapi-books.p.rapidapi.com',
+  XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
+  //a unique api key will be needed for rapid API, this will be speciic to your own account
+  XRapidAPIKeyHeaderValue: '**instert API key here**',
 };
 
 /*
