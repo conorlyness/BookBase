@@ -15,20 +15,24 @@
           Published: {{ book.published_date }}
         </h4>
         <h4 class="book-header-pages">Page Count: {{ book.pages }}</h4>
+        <h4 class="book-header-synopsis-title">Book Synopsis:</h4>
         <p class="book-header-synopsis">
-          <span>{{ book.synopsis }}</span>
+          <span> {{ book.synopsis }}</span>
         </p>
+        <ngx-stars
+          class="book-header-rating"
+          [readonly]="true"
+          [maxStars]="5"
+          [initialStars]="book.rating"
+          [color]="'#ffd700'"
+          [size]="1"
+        ></ngx-stars>
 
-        <div class="book-rating">
-          <ngx-stars
-            [readonly]="true"
-            [maxStars]="5"
-            [initialStars]="book.rating"
-            [color]="'#ffd700'"
-            [size]="1"
-          ></ngx-stars>
+        <div class="book-url">
+          <button target="_blank" (click)="followLink(book.url)">
+            Further Info
+          </button>
         </div>
-        <a class="book-url" target="_blank" href="{{ book.url }}">More</a>
       </div>
     </div>
   </div>

@@ -78,7 +78,7 @@
 
   &-description {
     padding: 20px;
-    display: flex;
+    // display: flex;
     flex-direction: column;
     justify-content: flex-end;
     height: 157px;
@@ -89,9 +89,10 @@
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 20px;
-    white-space: nowrap;
+    // white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    text-align: center;
   }
   &-id {
     color: #fff;

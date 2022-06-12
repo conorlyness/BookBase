@@ -24,15 +24,19 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
       this.bookId = params['id'];
-      // this.getBookDetails(this.bookId);
+      this.getBookDetails(this.bookId);
     });
   }
 
-  // getBookDetails(id: number): void {
-  //   this.bookSub = this.bookService
-  //     .getBookById(id)
-  //     .subscribe((response: bookById) => {
-  //       this.book = response;
-  //     });
-  // }
+  getBookDetails(id: number): void {
+    this.bookSub = this.bookService
+      .getBookById(id)
+      .subscribe((response: bookById) => {
+        this.book = response;
+      });
+  }
+
+  followLink(url: string) {
+    window.open(url, '_blank');
+  }
 }

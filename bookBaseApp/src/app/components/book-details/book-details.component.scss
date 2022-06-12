@@ -2,7 +2,7 @@
   max-width: 900px;
   margin: 20px auto;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.788);
+  background-color: rgb(0, 0, 0);
 }
 
 .book {
@@ -24,12 +24,13 @@
 
   &-header {
     &-title {
-      font-size: 50px;
+      font-size: 35px;
       color: #fff;
       font-weight: 700;
       line-height: 70px;
       //   white-space: nowrap;
       font-family: "Times New Roman", serif;
+      text-decoration: underline;
     }
 
     &-release-date {
@@ -42,15 +43,28 @@
       color: #fff;
       font-weight: 700;
       font-family: "Times New Roman", serif;
+      font-size: 15px;
     }
 
     &-synopsis {
+      color: #fff;
+      // font-weight: 700;
+      font-family: "Times New Roman", serif;
+    }
+
+    &-synopsis-title {
+      color: #fff;
+      // font-weight: 700;
+      font-family: "Times New Roman", serif;
+    }
+
+    &-pages {
       color: #fff;
       font-weight: 700;
       font-family: "Times New Roman", serif;
     }
 
-    &-pages {
+    &-url {
       color: #fff;
       font-weight: 700;
       font-family: "Times New Roman", serif;
