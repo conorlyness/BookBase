@@ -33,3 +33,14 @@ mat-toolbar {
 input::placeholder {
   color: rgba(255, 255, 255, 0.733);
 }
+
+.return-home {
+  border-radius: 50%;
+  padding: 5px;
+  margin-right: 5px;
+  background-color: rgba(179, 81, 236, 0.863);
+}
+
+mat-icon {
+  color: white;
+}
