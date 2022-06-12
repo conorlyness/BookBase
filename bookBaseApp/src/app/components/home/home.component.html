@@ -3,6 +3,7 @@
   <mat-form-field>
     <mat-label>Sort</mat-label>
     <mat-select panelClass="sort-select" [(ngModel)]="sort">
+      <!-- (selectionChange)="" -->
       <mat-option value="name">Name</mat-option>
       <mat-option value="year">Year</mat-option>
       <mat-option value="rating">Rating</mat-option>
@@ -12,7 +13,7 @@
 
 <div class="books">
   <ng-container *ngFor="let book of popularBooks">
-    <div class="book">
+    <div class="book" (click)="openBookDetails(book.book_id)">
       <div class="book-thumb-container">
         <img
           *ngIf="book.cover"
@@ -23,7 +24,8 @@
         <p *ngIf="!book.cover">No Image found</p>
       </div>
       <div class="book-description">
-        <p class="book-name"></p>
+        <p class="book-name">{{ book.name }}</p>
+        <a class="book-url">{{ book.url }}</a>
       </div>
     </div>
   </ng-container>

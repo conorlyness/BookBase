@@ -15,8 +15,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { NgxStarsModule } from 'ngx-stars';
 @NgModule({
-  declarations: [AppComponent, ToolbarComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    ToolbarComponent,
+    HomeComponent,
+    BookDetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSnackBarModule,
     MatSelectModule,
     HttpClientModule,
+    NgxStarsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
