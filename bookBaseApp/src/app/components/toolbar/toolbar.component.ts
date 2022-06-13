@@ -16,7 +16,9 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(value: string) {
-    this.searchInput.emit(value);
+    // this.searchInput.emit(value);
+
+    this.router.navigate(['search', value]);
     if (value.length > 0) {
       this.openSnackBar(`Showing results for ${value}`, '');
     }

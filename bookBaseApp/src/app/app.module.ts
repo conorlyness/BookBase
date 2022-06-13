@@ -17,12 +17,14 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { NgxStarsModule } from 'ngx-stars';
+import { BookSearchComponent } from './components/book-search/book-search.component';
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     HomeComponent,
     BookDetailsComponent,
+    BookSearchComponent,
   ],
   imports: [
     BrowserModule,

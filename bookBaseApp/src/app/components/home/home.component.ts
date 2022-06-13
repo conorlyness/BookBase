@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   public sort?: string;
   public popularBooks?: any;
 
+  //TODO: change this so it calls get weeks popular books with a input from the user, via a dropdown
   ngOnInit(): void {
     this.bookService.getWeeksPopularBooks('non fiction').subscribe({
       next: (response) => {
