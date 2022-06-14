@@ -11,7 +11,7 @@ import { BookService } from 'src/app/services/book.service';
 export class HomeComponent implements OnInit {
   constructor(private bookService: BookService, private router: Router) {}
 
-  public sort?: string;
+  public sort: string = '';
   public popularBooks?: any;
 
   //TODO: change this so it calls get weeks popular books with a input from the user, via a dropdown
@@ -27,5 +27,15 @@ export class HomeComponent implements OnInit {
   //this method is to navigate to a new page with the book id as a parameter so it can be used in the book-details component
   openBookDetails(id: string): void {
     this.router.navigate(['details', id]);
+  }
+
+  getPopularBooksByGenre(genre: string) {
+    this.bookService.getWeeksPopularBooks(genre).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.popularBooks = response;
+        console.log(this.popularBooks);
+      },
+    });
   }
 }

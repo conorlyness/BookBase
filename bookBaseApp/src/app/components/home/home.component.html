@@ -1,12 +1,23 @@
 <!-- home component -->
+
 <div class="filters">
+  <h1 class="home-title">Most popular books this week</h1>
   <mat-form-field>
-    <mat-label>Sort</mat-label>
-    <mat-select panelClass="sort-select" [(ngModel)]="sort">
-      <!-- (selectionChange)="" -->
-      <mat-option value="name">Name</mat-option>
-      <mat-option value="year">Year</mat-option>
-      <mat-option value="rating">Rating</mat-option>
+    <mat-label>Genre</mat-label>
+    <mat-select
+      panelClass="sort-select"
+      [(ngModel)]="sort"
+      (selectionChange)="getPopularBooksByGenre(sort)"
+    >
+      <mat-option value="fiction">Fiction</mat-option>
+      <mat-option value="non fiction">Non Fiction</mat-option>
+      <mat-option value="self help">Self Help</mat-option>
+      <mat-option value="science fiction">Science Fiction</mat-option>
+      <mat-option value="mystery">Mystery</mat-option>
+      <mat-option value="horror">Horror</mat-option>
+      <mat-option value="thriller">Thriller </mat-option>
+      <mat-option value="fantasy">Fantasy</mat-option>
+      <mat-option value="childrens">Childrens</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

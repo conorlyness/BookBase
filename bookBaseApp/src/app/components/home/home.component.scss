@@ -1,14 +1,16 @@
 .filters {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 20px;
-  padding-left: 5px;
-
-  color: rgba(179, 81, 236, 0.863);
+  /* padding-left: 5px; */
+  /* color: rgba(179, 81, 236, 0.863); */
+  // background-color: #202020;
+  border-radius: 10px;
+  text-align: center;
+  height: 80px;
 }
 
 ::ng-deep {
   .mat-form-field-infix {
-    background-color: rgba(179, 81, 236, 0.863);
   }
 
   .mat-select-value,
@@ -112,4 +114,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
   }
+}
+
+.home-title {
+  margin: 10px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  font-family: "Times New Roman", serif;
+  color: #000;
 }

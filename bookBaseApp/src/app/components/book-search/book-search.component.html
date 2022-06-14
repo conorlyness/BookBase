@@ -1,15 +1,3 @@
-<div class="filters">
-  <mat-form-field>
-    <mat-label>Sort</mat-label>
-    <mat-select panelClass="sort-select" [(ngModel)]="sort">
-      <!-- (selectionChange)="" -->
-      <mat-option value="name">Name</mat-option>
-      <mat-option value="year">Year</mat-option>
-      <mat-option value="rating">Rating</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
 <div class="books">
   <ng-container *ngFor="let book of searchedBook">
     <div class="book" (click)="openBookDetails(book.book_id)">
