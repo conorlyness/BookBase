@@ -1,6 +1,11 @@
 <mat-toolbar>
   <span class="title">Book Base</span>
   <span class="example-spacer"></span>
+  <button mat-icon-button (click)="gotoFavourites()" class="return-home">
+    <mat-icon aria-hidden="false" aria-label="Example home icon"
+      >favorite</mat-icon
+    >
+  </button>
   <button mat-icon-button (click)="returnHome()" class="return-home">
     <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
   </button>

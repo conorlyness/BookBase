@@ -33,4 +33,8 @@ export class ToolbarComponent implements OnInit {
   returnHome(): void {
     this.router.navigate(['']);
   }
+
+  gotoFavourites(): void {
+    this.router.navigate(['favourites']);
+  }
 }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { bookByGenre } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
+import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
+import { FavouritesComponent } from '../favourites/favourites.component';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +12,16 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private favouritesServices: FavouriteBooksService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   public sort: string = '';
   public popularBooks?: any;
+  public isFav: boolean = false;
 
   //TODO: change this so it calls get weeks popular books with a input from the user, via a dropdown
   ngOnInit(): void {
@@ -37,5 +46,17 @@ export class HomeComponent implements OnInit {
         console.log(this.popularBooks);
       },
     });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  addToFav(name: string) {
+    this.isFav = true;
+    this.favouritesServices.addToList(name);
+    this.openSnackBar(`Added ${name} to favourites`, '');
   }
 }

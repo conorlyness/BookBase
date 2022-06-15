@@ -36,6 +36,14 @@
       </div>
       <div class="book-description">
         <p class="book-name">{{ book.name }}</p>
+        <button
+          mat-icon-button
+          (click)="addToFav(book.name)"
+          class="add-to-fav"
+        >
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+
         <!-- <a class="book-url">{{ book.url }}</a> -->
       </div>
     </div>

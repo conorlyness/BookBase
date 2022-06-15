@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { NgxStarsModule } from 'ngx-stars';
 import { BookSearchComponent } from './components/book-search/book-search.component';
+import { FavouritesComponent } from './components/favourites/favourites.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { BookSearchComponent } from './components/book-search/book-search.compon
     HomeComponent,
     BookDetailsComponent,
     BookSearchComponent,
+    FavouritesComponent,
   ],
   imports: [
     BrowserModule,
