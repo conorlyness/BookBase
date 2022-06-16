@@ -1,8 +1,6 @@
 <h1 class="fav-books">Favourite books</h1>
-<ul class="fav-books-list">
-  <li>book</li>
-  <li>book</li>
-  <li>book</li>
-  <li>book</li>
-  <li>book</li>
+<ul class="fav-books-list" *ngFor="let book of favourites">
+  <li>
+    {{ book }}
+  </li>
 </ul>
