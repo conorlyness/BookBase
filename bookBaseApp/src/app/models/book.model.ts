@@ -27,3 +27,7 @@ export interface bookById {
   published_date: string;
   synopsis: string;
 }
+
+export interface favouriteBook {
+  name: string;
+}
