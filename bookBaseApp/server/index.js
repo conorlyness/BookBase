@@ -1,6 +1,6 @@
-const express = require('express');
-const db = require('./db');
-const cors = require('cors');
+const express = require("express");
+const db = require("./db");
+const cors = require("cors");
 const app = express();
 const API_PORT = 3001;
 
@@ -9,10 +9,19 @@ app.use(cors());
 
 //API routes
 
-app.get('/favourites', async (req: any, res: any) => {
+app.get("/favourites", async (req, res) => {
   const viewAllFavourites = await db.viewAllFavourites();
   if (viewAllFavourites) {
     return res.status(201).json(viewAllFavourites);
+  }
+
+  res.status(404);
+});
+
+app.post("/add", async (req, res) => {
+  const result = await db.addFavourite(req.query.bookName);
+  if (result) {
+    return res.status(201).json(result);
   }
 
   res.status(404);

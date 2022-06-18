@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 import { favouriteBook } from '../models/book.model';
 
@@ -19,12 +18,12 @@ export class FavouriteBooksService {
     console.log(`added ${name} to the favourites list`);
   }
 
-  getFavouritesList(): string[] {
-    return this.favouriteBooks;
-    console.log(this.favouriteBooks);
-  }
-
   getAllFavourites() {
     return this.http.get(environment.favouriteBooksUrl);
+  }
+
+  addFavourite(name: string) {
+    const url = environment.addFavouriteBookUrl + name;
+    return this.http.post<any>(url, {});
   }
 }

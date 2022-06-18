@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private router: Router,
-    private favouritesServices: FavouriteBooksService,
+    private favouritesService: FavouriteBooksService,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -56,7 +56,9 @@ export class HomeComponent implements OnInit {
 
   addToFav(name: string) {
     this.isFav = true;
-    this.favouritesServices.addToList(name);
+    this.favouritesService.addFavourite(name).subscribe((response: any) => {
+      console.log(response);
+    });
     this.openSnackBar(`Added ${name} to favourites`, '');
   }
 }

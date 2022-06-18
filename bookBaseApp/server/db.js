@@ -25,6 +25,17 @@ class Database {
       console.log(error);
     }
   };
+
+  addFavourite = async (name) => {
+    try {
+      let result = await this.connection
+        .request()
+        .query(`INSERT INTO dbo.Favourites (BookName) VALUES ('${name}');`);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 module.exports = new Database();
