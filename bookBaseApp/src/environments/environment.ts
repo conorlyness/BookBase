@@ -7,6 +7,7 @@ export const environment = {
   weeklyBooksByGenreUrl: 'https://hapi-books.p.rapidapi.com/week/',
   booksByNameUrl: 'https://hapi-books.p.rapidapi.com/search/',
   booksByIdUrl: 'https://hapi-books.p.rapidapi.com/book/',
+  favouriteBooksUrl: 'http://localhost:3001/favourites',
   XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
   XRapidAPIHostHeadervalue: 'hapi-books.p.rapidapi.com',
   XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
