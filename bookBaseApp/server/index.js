@@ -27,6 +27,15 @@ app.post("/add", async (req, res) => {
   res.status(404);
 });
 
+app.delete("/delete", async (req, res) => {
+  const result = await db.removeFavourite(req.query.bookName);
+  if (result) {
+    return res.status(201).json(result);
+  }
+
+  res.status(404);
+});
+
 app.listen(API_PORT, () => {
   db.connect();
   console.log(`listening on port ${API_PORT}`);

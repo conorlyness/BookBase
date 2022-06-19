@@ -9,6 +9,7 @@ export const environment = {
   booksByIdUrl: 'https://hapi-books.p.rapidapi.com/book/',
   favouriteBooksUrl: 'http://localhost:3001/favourites',
   addFavouriteBookUrl: 'http://localhost:3001/add?bookName=',
+  deleteFavouriteBookUrl: 'http://localhost:3001/delete?bookName=',
   XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
   XRapidAPIHostHeadervalue: 'hapi-books.p.rapidapi.com',
   XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',

@@ -36,6 +36,17 @@ class Database {
       console.log(error);
     }
   };
+
+  removeFavourite = async (name) => {
+    try {
+      let result = await this.connection
+        .request()
+        .query(`DELETE FROM dbo.Favourites WHERE BookName = '${name}';`);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 module.exports = new Database();

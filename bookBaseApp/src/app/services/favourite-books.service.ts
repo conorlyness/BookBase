@@ -26,4 +26,10 @@ export class FavouriteBooksService {
     const url = environment.addFavouriteBookUrl + name;
     return this.http.post<any>(url, {});
   }
+
+  removeFavourite(name: string) {
+    console.log(`going to remove `, name);
+    const url = environment.deleteFavouriteBookUrl + name;
+    return this.http.delete<any>(url, {});
+  }
 }

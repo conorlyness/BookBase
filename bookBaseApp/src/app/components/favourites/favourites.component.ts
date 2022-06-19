@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { favouriteBook } from 'src/app/models/book.model';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
 
@@ -10,14 +11,37 @@ import { FavouriteBooksService } from 'src/app/services/favourite-books.service'
 export class FavouritesComponent implements OnInit {
   favourites: any;
   books?: any;
-  constructor(private favouritesService: FavouriteBooksService) {}
+  constructor(
+    private favouritesService: FavouriteBooksService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
+    this.getAllFavouriteBooks();
+  }
+
+  removeFav(name: string) {
+    console.log(`calling service to remove `, name);
+    this.favouritesService.removeFavourite(name).subscribe((response: any) => {
+      console.log(response);
+    });
+
+    this.openSnackBar(`Removed ${name} from favourites`, '');
+    this.getAllFavouriteBooks();
+  }
+
+  getAllFavouriteBooks() {
     this.favouritesService.getAllFavourites().subscribe({
       next: (response) => {
         this.books = response;
         console.log(this.books);
       },
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
     });
   }
 }

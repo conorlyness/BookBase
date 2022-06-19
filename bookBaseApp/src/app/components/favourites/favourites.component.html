@@ -2,5 +2,12 @@
 <ul class="fav-books-list" *ngFor="let book of books">
   <li>
     {{ book.BookName }}
+    <button
+      mat-icon-button
+      (click)="removeFav(book.BookName)"
+      class="remove-fav"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
   </li>
 </ul>
