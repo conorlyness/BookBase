@@ -1,20 +1,42 @@
 .fav-books {
   text-align: center;
 }
-
-.fav-books-list {
-  text-align: center;
-  margin-right: 100px;
-  margin-left: 100px;
+* {
+  box-sizing: border-box;
 }
 
 ul {
+  list-style-type: none;
   padding: 0;
-  list-style: inside decimal-leading-zero;
+  margin: 0;
+  margin-left: 100px;
+  margin-right: 100px;
+  // text-align: center;
 }
-li {
-  text-align: center;
-  padding: 5px 10px;
-  background-color: #eeeeee;
-  border: 1px solid #dddddd;
+
+ul li {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;
+}
+
+ul li:hover {
+  background-color: #eee;
+}
+
+.remove-fav {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translate(0%, -50%);
+  border-radius: 20px;
+  border: none;
 }
