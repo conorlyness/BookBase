@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,7 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  constructor(private _snackBar: MatSnackBar, private router: Router) {}
+  constructor(
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    @Inject(DOCUMENT) document: Document
+  ) {}
 
   @Output() searchInput = new EventEmitter<string>();
   searchValue?: string;
@@ -36,5 +41,14 @@ export class ToolbarComponent implements OnInit {
 
   gotoFavourites(): void {
     this.router.navigate(['favourites']);
+  }
+
+  openNav() {
+    (<HTMLInputElement>document.getElementById('mySidenav')).style.width =
+      '250px';
+  }
+
+  closeNav() {
+    (<HTMLInputElement>document.getElementById('mySidenav')).style.width = '0';
   }
 }

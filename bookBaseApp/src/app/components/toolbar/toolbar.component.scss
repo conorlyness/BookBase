@@ -28,19 +28,62 @@ mat-toolbar {
 
 .title {
   color: white;
+  text-decoration: none;
 }
 
 input::placeholder {
   color: rgba(255, 255, 255, 0.733);
 }
 
-.return-home {
-  border-radius: 50%;
-  padding: 5px;
-  margin-right: 5px;
-  background-color: rgba(179, 81, 236, 0.863);
-}
-
 mat-icon {
   color: white;
+}
+
+.menu-button {
+  margin-right: 10px;
+  border: none;
+  background-color: #202020;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #202020;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
