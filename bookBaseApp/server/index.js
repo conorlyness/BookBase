@@ -36,6 +36,18 @@ app.delete("/delete", async (req, res) => {
   res.status(404);
 });
 
+//use to get a specific favourite book
+app.get("/favourites/name", async (req, res) => {
+  const viewSpecificFavourite = await db.viewSpecificFavourite(
+    req.query.bookName
+  );
+  if (viewSpecificFavourite) {
+    return res.status(201).json(viewSpecificFavourite);
+  }
+
+  res.status(404);
+});
+
 app.listen(API_PORT, () => {
   db.connect();
   console.log(`listening on port ${API_PORT}`);

@@ -26,6 +26,17 @@ class Database {
     }
   };
 
+  viewSpecificFavourite = async (name) => {
+    try {
+      const result = await this.connection.request().query(`SELECT *
+      FROM dbo.Favourites
+      WHERE BookName LIKE ('${name}');`);
+      return result.recordset;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   addFavourite = async (name) => {
     try {
       let result = await this.connection
