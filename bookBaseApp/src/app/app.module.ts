@@ -19,6 +19,11 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { NgxStarsModule } from 'ngx-stars';
 import { BookSearchComponent } from './components/book-search/book-search.component';
 import { FavouritesComponent } from './components/favourites/favourites.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RemoveFavDialogComponent } from './components/remove-fav-dialog/remove-fav-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +32,7 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
     BookDetailsComponent,
     BookSearchComponent,
     FavouritesComponent,
+    RemoveFavDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,9 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
     MatSelectModule,
     HttpClientModule,
     NgxStarsModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

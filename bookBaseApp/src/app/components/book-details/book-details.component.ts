@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { bookById } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
+import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
+import { RemoveFavDialogComponent } from '../remove-fav-dialog/remove-fav-dialog.component';
 
 @Component({
   selector: 'app-book-details',
@@ -15,17 +19,24 @@ export class BookDetailsComponent implements OnInit {
   //this variable will be used to store the id from the url
   routeSub!: Subscription;
   bookSub!: Subscription;
+  isFav: boolean = false;
+  dialogSelection?: any;
 
   constructor(
     private bookService: BookService,
-    private ActivatedRoute: ActivatedRoute
+    private ActivatedRoute: ActivatedRoute,
+    private favouritesService: FavouriteBooksService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
-      this.bookId = params['id'];
-      this.getBookDetails(this.bookId);
-    });
+  async ngOnInit() {
+    this.routeSub = this.ActivatedRoute.params.subscribe(
+      async (params: Params) => {
+        this.bookId = params['id'];
+        this.getBookDetails(this.bookId);
+      }
+    );
   }
 
   getBookDetails(id: number): void {
@@ -34,9 +45,79 @@ export class BookDetailsComponent implements OnInit {
       .subscribe((response: bookById) => {
         this.book = response;
       });
+    this.isBookFavourite('The king of drugs');
   }
 
   followLink(url: string) {
     window.open(url, '_blank');
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  addToFav(name: string) {
+    if (this.isFav == true) {
+      this.openDialog();
+    } else {
+      this.favouritesService.addFavourite(name).subscribe((response: any) => {
+        console.log(response);
+      });
+      this.openSnackBar(`Added ${name} to favourites`, '');
+      this.setFavouriteIcon(true);
+    }
+  }
+
+  isBookFavourite(bookName: string) {
+    this.favouritesService
+      .isBookInFavourites(bookName)
+      .subscribe(async (response: any) => {
+        if (response.length > 0) {
+          this.isFav = true;
+          console.log('in true: ', this.isFav);
+          this.setFavouriteIcon(true);
+        } else {
+          this.isFav = false;
+          console.log('in false');
+          this.setFavouriteIcon(false);
+        }
+      });
+  }
+
+  setFavouriteIcon(flag: boolean) {
+    if (flag) {
+      (<HTMLInputElement>document.getElementById('fav')).style.color = 'red';
+    } else {
+      (<HTMLInputElement>document.getElementById('fav')).style.color = 'black';
+    }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RemoveFavDialogComponent, {
+      data: { bookName: 'The king of drugs' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.dialogSelection = result;
+      if (this.dialogSelection) {
+        //call service to remove book from favourties list
+        this.favouritesService
+          .removeFavourite(this.dialogSelection.bookName)
+          .subscribe((response: any) => {
+            console.log(response);
+          });
+
+        this.openSnackBar(
+          `Removed ${this.dialogSelection.bookName} from favourites`,
+          ''
+        );
+
+        //set the favourite icon to false now that it has been removed from favourites
+        this.setFavouriteIcon(false);
+      }
+    });
   }
 }

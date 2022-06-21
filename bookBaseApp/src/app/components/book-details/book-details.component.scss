@@ -1,73 +1,179 @@
-.details-wrapper {
-  max-width: 900px;
+// .details-wrapper {
+//   max-width: 900px;
+//   margin: 20px auto;
+//   position: relative;
+//   background-color: rgb(0, 0, 0);
+// }
+
+.content {
+  max-width: 1110px;
   margin: 20px auto;
   position: relative;
-  background-color: rgb(0, 0, 0);
+}
+
+.book-banner-img {
+  height: 400px;
+  width: 100%;
 }
 
 .book {
   &-banner {
-    height: 342px;
-    overflow: hidden;
-
-    &-img {
-      width: 100%;
-      filter: blur(1px);
-    }
+    // height: fit-content;
+    // width: fit-content;
+    // overflow: hidden;
   }
 
-  &-content {
-    text-align: center;
-    position: relative;
-    top: -200px;
+  &-img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: blur(1px);
   }
+}
 
-  &-header {
-    &-title {
-      font-size: 35px;
-      color: #fff;
-      font-weight: 700;
-      line-height: 70px;
-      //   white-space: nowrap;
-      font-family: "Times New Roman", serif;
-      text-decoration: underline;
-    }
+//   &-content {
+//     text-align: center;
+//     position: relative;
+//     top: -200px;
+//   }
 
-    &-release-date {
-      color: #fff;
-      font-weight: 700;
-      font-family: "Times New Roman", serif;
-    }
+//   &-header {
+//     &-title {
+//       font-size: 35px;
+//       color: #fff;
+//       font-weight: 700;
+//       line-height: 70px;
+//       //   white-space: nowrap;
+//       font-family: "Times New Roman", serif;
+//       text-decoration: underline;
+//     }
 
-    &-author {
-      color: #fff;
-      font-weight: 700;
-      font-family: "Times New Roman", serif;
-      font-size: 15px;
-    }
+//     &-release-date {
+//       color: #fff;
+//       font-weight: 700;
+//       font-family: "Times New Roman", serif;
+//     }
 
-    &-synopsis {
-      color: #fff;
-      // font-weight: 700;
-      font-family: "Times New Roman", serif;
-    }
+//     &-author {
+//       color: #fff;
+//       font-weight: 700;
+//       font-family: "Times New Roman", serif;
+//       font-size: 15px;
+//     }
 
-    &-synopsis-title {
-      color: #fff;
-      // font-weight: 700;
-      font-family: "Times New Roman", serif;
-    }
+//     &-synopsis {
+//       color: #fff;
+//       // font-weight: 700;
+//       font-family: "Times New Roman", serif;
+//     }
 
-    &-pages {
-      color: #fff;
-      font-weight: 700;
-      font-family: "Times New Roman", serif;
-    }
+//     &-synopsis-title {
+//       color: #fff;
+//       // font-weight: 700;
+//       font-family: "Times New Roman", serif;
+//     }
 
-    &-url {
-      color: #fff;
-      font-weight: 700;
-      font-family: "Times New Roman", serif;
-    }
-  }
+//     &-pages {
+//       color: #fff;
+//       font-weight: 700;
+//       font-family: "Times New Roman", serif;
+//     }
+
+//     &-url {
+//       color: #fff;
+//       font-weight: 700;
+//       font-family: "Times New Roman", serif;
+//     }
+//   }
+// }
+
+.tile1 {
+  background-color: #592e6d;
+}
+
+.tile2 {
+  background-color: #6834d4;
+}
+
+.tile3 {
+  background-color: #a37cf0;
+}
+
+.tile4 {
+  background-color: #ac73ff;
+}
+
+mat-grid-tile:hover {
+  box-shadow: 4px 3px 11px 6px rgba(176, 5, 255, 0.46);
+  transform: translateY(-3px);
+}
+
+mat-grid-tile {
+  box-shadow: 4px 3px 8px 0px rgba(160, 8, 230, 0.22);
+}
+
+.content {
+}
+
+.book-title {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 0 0 20px black;
+  text-decoration: underline;
+  font-family: Bookman Old Style;
+  text-align: center;
+}
+
+.book-author {
+  padding-top: 10px;
+  text-align: center;
+  font-family: Bookman Old Style;
+  font-weight: lighter;
+}
+
+.book-header-pages {
+  font-weight: 500;
+  font-size: 40px;
+  text-shadow: 0 0 2px white;
+  font-family: Bookman Old Style;
+}
+
+.book-synopsis {
+  font-weight: 500;
+  font-size: 30px;
+  text-shadow: 0 0 2px white;
+  text-align: center;
+  text-decoration: underline;
+  font-family: Bookman Old Style;
+}
+
+.synopsis-text {
+  font-size: 15px;
+  text-align: center;
+  font-family: Bookman Old Style;
+}
+
+.btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  background: #720ab8;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 5px;
+}
+.btn:hover {
+  background: #c9b9e2fd;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+ngx-stars {
+  display: flex;
+  justify-content: center;
 }
