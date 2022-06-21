@@ -13,10 +13,10 @@ export class FavouriteBooksService {
 
   constructor(private http: HttpClient) {}
 
-  addToList(name: string) {
-    this.favouriteBooks?.push(name);
-    console.log(`added ${name} to the favourites list`);
-  }
+  // addToList(name: string) {
+  //   this.favouriteBooks?.push(name);
+  //   console.log(`added ${name} to the favourites list`);
+  // }
 
   getAllFavourites() {
     return this.http.get(environment.favouriteBooksUrl);
@@ -28,8 +28,12 @@ export class FavouriteBooksService {
   }
 
   removeFavourite(name: string) {
-    console.log(`going to remove `, name);
     const url = environment.deleteFavouriteBookUrl + name;
     return this.http.delete<any>(url, {});
+  }
+
+  isBookInFavourites(name: string) {
+    const url = environment.getSpecificFavouriteBookUrl + name;
+    return this.http.get(url);
   }
 }
