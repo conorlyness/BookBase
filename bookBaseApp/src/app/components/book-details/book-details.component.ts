@@ -45,7 +45,7 @@ export class BookDetailsComponent implements OnInit {
       .subscribe((response: bookById) => {
         this.book = response;
       });
-    this.isBookFavourite('The king of drugs');
+    this.isBookFavourite(this.book.name);
   }
 
   followLink(url: string) {
@@ -76,11 +76,9 @@ export class BookDetailsComponent implements OnInit {
       .subscribe(async (response: any) => {
         if (response.length > 0) {
           this.isFav = true;
-          console.log('in true: ', this.isFav);
           this.setFavouriteIcon(true);
         } else {
           this.isFav = false;
-          console.log('in false');
           this.setFavouriteIcon(false);
         }
       });
@@ -96,7 +94,7 @@ export class BookDetailsComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(RemoveFavDialogComponent, {
-      data: { bookName: 'The king of drugs' },
+      data: { bookName: this.book.name },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
