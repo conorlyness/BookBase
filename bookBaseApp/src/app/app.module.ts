@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RemoveFavDialogComponent } from './components/remove-fav-dialog/remove-fav-dialog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { RemoveFavDialogComponent } from './components/remove-fav-dialog/remove-
     MatGridListModule,
     MatMenuModule,
     MatDialogModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
