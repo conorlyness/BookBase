@@ -1,5 +1,9 @@
 <div class="books">
-  <ng-container *ngFor="let book of searchedBook">
+  <ng-container
+    *ngFor="
+      let book of searchedBook | paginate: { itemsPerPage: 10, currentPage: p }
+    "
+  >
     <div class="book" (click)="openBookDetails(book.book_id)">
       <div class="book-thumb-container">
         <img
@@ -16,4 +20,5 @@
       </div>
     </div>
   </ng-container>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { bookById } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { RemoveFavDialogComponent } from '../remove-fav-dialog/remove-fav-dialog.component';
 
 @Component({
@@ -26,7 +27,7 @@ export class BookDetailsComponent implements OnInit {
     private bookService: BookService,
     private ActivatedRoute: ActivatedRoute,
     private favouritesService: FavouriteBooksService,
-    private _snackBar: MatSnackBar,
+    private snackbar: SnackbarService,
     public dialog: MatDialog
   ) {}
 
@@ -52,12 +53,6 @@ export class BookDetailsComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
-
   addToFav(name: string) {
     if (this.isFav == true) {
       this.openDialog();
@@ -65,7 +60,7 @@ export class BookDetailsComponent implements OnInit {
       this.favouritesService.addFavourite(name).subscribe((response: any) => {
         console.log(response);
       });
-      this.openSnackBar(`Added ${name} to favourites`, '');
+      this.snackbar.openSnackBar(`Added ${name} to favourites`, '');
       this.setFavouriteIcon(true);
     }
   }
@@ -108,7 +103,7 @@ export class BookDetailsComponent implements OnInit {
             console.log(response);
           });
 
-        this.openSnackBar(
+        this.snackbar.openSnackBar(
           `Removed ${this.dialogSelection.bookName} from favourites`,
           ''
         );

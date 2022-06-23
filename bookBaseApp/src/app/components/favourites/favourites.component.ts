@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { favouriteBook } from 'src/app/models/book.model';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-favourites',
@@ -13,7 +14,7 @@ export class FavouritesComponent implements OnInit {
   books?: any;
   constructor(
     private favouritesService: FavouriteBooksService,
-    private _snackBar: MatSnackBar
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class FavouritesComponent implements OnInit {
       console.log(response);
     });
 
-    this.openSnackBar(`Removed ${name} from favourites`, '');
+    this.snackbar.openSnackBar(`Removed ${name} from favourites`, '');
     this.getAllFavouriteBooks();
   }
 
@@ -36,12 +37,6 @@ export class FavouritesComponent implements OnInit {
         this.books = response;
         console.log(this.books);
       },
-    });
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
     });
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,9 +11,9 @@ import { DOCUMENT } from '@angular/common';
 })
 export class ToolbarComponent implements OnInit {
   constructor(
-    private _snackBar: MatSnackBar,
     private router: Router,
-    @Inject(DOCUMENT) document: Document
+    @Inject(DOCUMENT) document: Document,
+    private snackbar: SnackbarService
   ) {}
 
   @Output() searchInput = new EventEmitter<string>();
@@ -25,14 +26,8 @@ export class ToolbarComponent implements OnInit {
 
     this.router.navigate(['search', value]);
     if (value.length > 0) {
-      this.openSnackBar(`Showing results for ${value}`, '');
+      this.snackbar.openSnackBar(`Showing results for ${value}`, '');
     }
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
   }
 
   returnHome(): void {

@@ -22,6 +22,7 @@ export class BookSearchComponent implements OnInit {
   routeSub!: Subscription;
   bookSub!: Subscription;
   bookName!: string;
+  p: number = 1;
 
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
