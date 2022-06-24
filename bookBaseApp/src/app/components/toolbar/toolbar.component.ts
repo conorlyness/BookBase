@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Inject,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
@@ -18,6 +26,10 @@ export class ToolbarComponent implements OnInit {
 
   @Output() searchInput = new EventEmitter<string>();
   searchValue?: string;
+
+  //using view child decorator
+  //@ViewChild() with Template Variable using ElementRef to access Native Element
+  @ViewChild('sideNav') private elSideNav = {} as ElementRef;
 
   ngOnInit(): void {}
 
@@ -39,11 +51,15 @@ export class ToolbarComponent implements OnInit {
   }
 
   openNav() {
-    (<HTMLInputElement>document.getElementById('mySidenav')).style.width =
-      '250px';
+    // (<HTMLInputElement>document.getElementById('mySidenav')).style.width =
+    //   '250px';
+
+    this.elSideNav.nativeElement.style.width = '250px';
   }
 
   closeNav() {
-    (<HTMLInputElement>document.getElementById('mySidenav')).style.width = '0';
+    // (<HTMLInputElement>document.getElementById('mySidenav')).style.width = '0';
+
+    this.elSideNav.nativeElement.style.width = '0';
   }
 }
