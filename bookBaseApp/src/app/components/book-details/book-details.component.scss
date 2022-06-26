@@ -131,6 +131,13 @@ mat-grid-tile {
   font-weight: lighter;
 }
 
+.book-release-date {
+  padding-top: 10px;
+  text-align: center;
+  font-family: Bookman Old Style;
+  font-weight: lighter;
+}
+
 .book-header-pages {
   font-weight: 500;
   font-size: 40px;
@@ -145,6 +152,14 @@ mat-grid-tile {
   text-align: center;
   text-decoration: underline;
   font-family: Bookman Old Style;
+}
+
+.book-synopsis-rating {
+  padding: 10px;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }
 
 .synopsis-text {

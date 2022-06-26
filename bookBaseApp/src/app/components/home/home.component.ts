@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { bookByGenre } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { FavouritesComponent } from '../favourites/favourites.component';
 
 @Component({
@@ -16,12 +17,13 @@ export class HomeComponent implements OnInit {
     private bookService: BookService,
     private router: Router,
     private favouritesService: FavouriteBooksService,
-    private _snackBar: MatSnackBar
+    private snackbar: SnackbarService
   ) {}
 
   public sort: string = '';
   public popularBooks?: any;
   public isFav: boolean = false;
+  p: number = 1;
 
   //TODO: change this so it calls get weeks popular books with a input from the user, via a dropdown
   ngOnInit(): void {
@@ -48,17 +50,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
-
   addToFav(name: string) {
     this.isFav = true;
     this.favouritesService.addFavourite(name).subscribe((response: any) => {
       console.log(response);
     });
-    this.openSnackBar(`Added ${name} to favourites`, '');
+    this.snackbar.openSnackBar(`Added ${name} to favourites`, '');
   }
 }

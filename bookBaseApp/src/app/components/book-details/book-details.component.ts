@@ -45,8 +45,8 @@ export class BookDetailsComponent implements OnInit {
       .getBookById(id)
       .subscribe((response: bookById) => {
         this.book = response;
+        this.isBookFavourite(this.book.name);
       });
-    this.isBookFavourite(this.book.name);
   }
 
   followLink(url: string) {

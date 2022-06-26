@@ -58,4 +58,15 @@ export class BookService {
         ),
     });
   }
+
+  //using the google books api instead
+  getBookByGenre(genre: string) {
+    const url =
+      environment.getBooksByGenreUrl +
+      genre +
+      '&maxResults=40' +
+      environment.GoogleBooksAPIKey;
+    console.log('url is: ', url);
+    return this.http.get(url);
+  }
 }

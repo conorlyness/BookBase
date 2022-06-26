@@ -17,6 +17,10 @@ export const environment = {
   XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
   //a unique api key will be needed for rapid API, this will be speciic to your own account
   XRapidAPIKeyHeaderValue: '**instert API key here**',
+
+  //google books api as a backup
+  getBooksByGenreUrl: 'https://www.googleapis.com/books/v1/volumes?q=subject:',
+  GoogleBooksAPIKey: '&key=**instert API key here**',
 };
 
 /*
