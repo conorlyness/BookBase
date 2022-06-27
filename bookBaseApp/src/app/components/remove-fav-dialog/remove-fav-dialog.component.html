@@ -1,8 +1,12 @@
-<h1 mat-dialog-title>Remove Favourite</h1>
-<div mat-dialog-content>
+<h1 mat-dialog-title class="title">Remove Favourite</h1>
+<div class="text" mat-dialog-content>
   You are about to remove {{ data.bookName }} from favourites
 </div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close [mat-dialog-close]="data">Confirm</button>
-  <button mat-button mat-dialog-close (click)="onNoClick()">Close</button>
+<div mat-dialog-actions class="btn-container">
+  <button class="confirm" mat-button mat-dialog-close [mat-dialog-close]="data">
+    Confirm
+  </button>
+  <button class="close" mat-button mat-dialog-close (click)="onNoClick()">
+    Close
+  </button>
 </div>

@@ -1,0 +1,48 @@
+.title {
+  text-decoration: underline;
+  font-family: Bookman Old Style;
+  text-align: center;
+}
+
+.text {
+  font-weight: bold;
+  font-family: Bookman Old Style;
+  text-align: center;
+}
+
+.confirm {
+  width: 70px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #720ab8;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 5px;
+}
+.confirm:hover {
+  background: #4305a7fd;
+}
+
+.close {
+  width: 70px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #720ab8;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 5px;
+}
+.close:hover {
+  background: #4305a7fd;
+}
+
+.btn-container {
+  margin-top: 10px;
+  justify-content: right;
+}

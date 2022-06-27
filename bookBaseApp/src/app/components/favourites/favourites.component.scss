@@ -39,4 +39,9 @@ ul li:hover {
   transform: translate(0%, -50%);
   border-radius: 20px;
   border: none;
+  background-color: #f6f6f6;
+}
+
+.remove-fav:hover {
+  background-color: rgb(197, 113, 113);
 }
