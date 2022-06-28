@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -22,6 +22,7 @@ export class BookDetailsComponent implements OnInit {
   bookSub!: Subscription;
   isFav: boolean = false;
   dialogSelection?: any;
+  @ViewChild('fav') private elFavButton = {} as ElementRef;
 
   constructor(
     private bookService: BookService,
@@ -60,6 +61,7 @@ export class BookDetailsComponent implements OnInit {
       this.favouritesService.addFavourite(name).subscribe((response: any) => {
         console.log(response);
       });
+      this.isFav = true;
       this.snackbar.openSnackBar(`Added ${name} to favourites`, '');
       this.setFavouriteIcon(true);
     }
@@ -80,10 +82,10 @@ export class BookDetailsComponent implements OnInit {
   }
 
   setFavouriteIcon(flag: boolean) {
-    if (flag) {
-      (<HTMLInputElement>document.getElementById('fav')).style.color = 'red';
+    if (flag == true) {
+      this.elFavButton.nativeElement.style.color = 'red';
     } else {
-      (<HTMLInputElement>document.getElementById('fav')).style.color = 'black';
+      this.elFavButton.nativeElement.style.color = 'white';
     }
   }
 
