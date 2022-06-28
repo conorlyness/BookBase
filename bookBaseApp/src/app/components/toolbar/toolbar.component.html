@@ -1,5 +1,10 @@
 <mat-toolbar>
-  <button mat-icon-button (click)="openNav()" class="menu-button">
+  <button
+    [title]="'Menu'"
+    mat-icon-button
+    (click)="openNav()"
+    class="menu-button"
+  >
     <mat-icon>menu</mat-icon>
   </button>
   <a href="/" class="title">Book Base</a>

@@ -4,6 +4,7 @@
     {{ book.BookName }}
     <button
       mat-icon-button
+      [title]="'remove'"
       (click)="openDialog(book.BookName)"
       class="remove-fav"
     >

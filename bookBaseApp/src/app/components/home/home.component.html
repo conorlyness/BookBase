@@ -29,7 +29,11 @@
       let book of popularBooks | paginate: { itemsPerPage: 10, currentPage: p }
     "
   >
-    <div class="book" (click)="openBookDetails(book.book_id)">
+    <div
+      class="book"
+      [title]="book.name"
+      (click)="openBookDetails(book.book_id)"
+    >
       <div class="book-thumb-container">
         <img
           *ngIf="book.cover"

@@ -3,6 +3,7 @@
     <mat-grid-tile class="tile1">
       <div class="book-cover">
         <img
+          [title]="book.name"
           src="{{ book.cover }}"
           alt="background image"
           class="book-banner-img"
@@ -29,17 +30,29 @@
         </p>
 
         <div class="btn-container">
-          <button mat-fab (click)="addToFav(book.name)" class="btn" id="fav">
+          <button
+            [title]="'favourite'"
+            mat-fab
+            (click)="addToFav(book.name)"
+            class="btn"
+            #fav
+          >
             <mat-icon>favorite</mat-icon>
           </button>
-          <button target="_blank" class="btn" (click)="followLink(book.url)">
+          <button
+            [title]="'more info'"
+            target="_blank"
+            class="btn"
+            (click)="followLink(book.url)"
+          >
             <mat-icon>info</mat-icon>
           </button>
 
           <ngx-stars
+            [title]="'book rating'"
             [readonly]="true"
             [maxStars]="5"
-            [initialStars]="3"
+            [initialStars]="book.rating"
             [color]="'#ffd700'"
             [size]="1"
           ></ngx-stars>
