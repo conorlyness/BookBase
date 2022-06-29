@@ -24,6 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RemoveFavDialogComponent } from './components/remove-fav-dialog/remove-fav-dialog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ChangeThemeComponent } from './components/change-theme/change-theme.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BookSearchComponent,
     FavouritesComponent,
     RemoveFavDialogComponent,
+    ChangeThemeComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-toolbar',

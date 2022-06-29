@@ -12,7 +12,7 @@ body {
 }
 
 .search input {
-  background-color: rgba(179, 81, 236, 0.863);
+  background-color: #720ab8;
   outline: none;
   border: none;
   border-radius: 20px;
@@ -32,7 +32,7 @@ mat-toolbar {
 }
 
 input::placeholder {
-  color: rgba(255, 255, 255, 0.733);
+  color: white;
 }
 
 mat-icon {
@@ -44,7 +44,6 @@ mat-icon {
   border: none;
   background-color: #202020;
 }
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -68,7 +67,7 @@ mat-icon {
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: #6022d3;
 }
 
 .sidenav .closebtn {
@@ -86,4 +85,8 @@ mat-icon {
   .sidenav a {
     font-size: 18px;
   }
+}
+
+.change-theme {
+  margin-right: 5px;
 }
