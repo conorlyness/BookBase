@@ -24,6 +24,9 @@ body {
 
 mat-toolbar {
   background-color: #202020;
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0;
 }
 
 .title {

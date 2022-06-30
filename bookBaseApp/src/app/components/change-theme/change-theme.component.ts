@@ -20,8 +20,8 @@ export class ChangeThemeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (this.themeOptions === 'grey') {
-      this.changeTheme('grey');
+    if (this.themeOptions === 'darkgray') {
+      this.changeTheme('darkgray');
     } else {
       this.changeTheme('white');
     }
@@ -33,7 +33,7 @@ export class ChangeThemeComponent implements OnInit {
   }
 
   greyScaleTheme() {
-    this.changeTheme('grey');
+    this.changeTheme('darkgray');
     localStorage.setItem('bgcolor', this.theme);
   }
 

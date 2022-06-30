@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RemoveFavDialogComponent } from './components/remove-fav-dialog/remove-fav-dialog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChangeThemeComponent } from './components/change-theme/change-theme.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ChangeThemeComponent } from './components/change-theme/change-theme.com
     MatMenuModule,
     MatDialogModule,
     NgxPaginationModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
