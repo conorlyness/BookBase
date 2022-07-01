@@ -1,4 +1,17 @@
-<!-- tool bar stays on top -->
-<app-toolbar (searchInput)="displaySearchTerm($event)"></app-toolbar>
-<!-- all components are being loaded through the router outlet -->
-<router-outlet></router-outlet>
+<div class="content mat-app-background">
+  <!-- tool bar stays on top -->
+  <app-toolbar (searchInput)="displaySearchTerm($event)">
+    <div class="change-theme">
+      <mat-icon class="mr-8">brightness_5</mat-icon>
+      <mat-slide-toggle
+        [checked]="darkThemePref"
+        (change)="onChange($event)"
+        class="mr-8"
+      >
+      </mat-slide-toggle>
+      <mat-icon>bedtime</mat-icon>
+    </div>
+  </app-toolbar>
+  <!-- all components are being loaded through the router outlet -->
+  <router-outlet></router-outlet>
+</div>

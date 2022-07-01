@@ -24,9 +24,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RemoveFavDialogComponent } from './components/remove-fav-dialog/remove-fav-dialog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ChangeThemeComponent } from './components/change-theme/change-theme.component';
 import { MatCardModule } from '@angular/material/card';
-
+import { AddFavDialogComponent } from './components/add-fav-dialog/add-fav-dialog.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,7 @@ import { MatCardModule } from '@angular/material/card';
     BookSearchComponent,
     FavouritesComponent,
     RemoveFavDialogComponent,
-    ChangeThemeComponent,
+    AddFavDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,9 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     NgxPaginationModule,
     MatCardModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,11 +5,11 @@
 //   background-color: rgb(0, 0, 0);
 // }
 
-.content {
-  max-width: 1110px;
-  margin: 20px auto;
-  position: relative;
-}
+// .content {
+//   max-width: 1110px;
+//   margin: 20px auto;
+//   position: relative;
+// }
 
 .book-banner-img {
   height: 400px;
@@ -111,9 +111,6 @@ mat-grid-tile {
   box-shadow: 4px 3px 8px 0px rgba(160, 8, 230, 0.22);
 }
 
-.content {
-}
-
 .book-title {
   color: white;
   font-size: 35px;
@@ -191,4 +188,19 @@ mat-grid-tile {
 ngx-stars {
   display: flex;
   justify-content: center;
+}
+
+// mat-grid-list {
+//   max-width: 750px;
+//   max-height: 500px;
+//   text-align: center;
+// }
+
+.grid {
+  width: 1100px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 50px !important;
+  padding-bottom: 0 !important;
+  height: calc(100vh - 64px);
 }

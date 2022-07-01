@@ -6,6 +6,7 @@ import {
   Inject,
   ViewChild,
   ElementRef,
+  HostBinding,
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';

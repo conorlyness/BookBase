@@ -24,9 +24,9 @@ body {
 
 mat-toolbar {
   background-color: #202020;
-  position: sticky;
-  position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0;
+  // position: sticky;
+  // position: -webkit-sticky; /* For macOS/iOS Safari */
+  // top: 0;
 }
 
 .title {
@@ -88,8 +88,4 @@ mat-icon {
   .sidenav a {
     font-size: 18px;
   }
-}
-
-.change-theme {
-  margin-right: 5px;
 }
