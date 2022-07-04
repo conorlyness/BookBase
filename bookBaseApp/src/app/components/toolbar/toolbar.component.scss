@@ -2,17 +2,13 @@
   flex: 1 1 auto;
 }
 
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 .search {
   text-align: center;
   font-size: large;
 }
 
 .search input {
-  background-color: #720ab8;
+  background-color: blueviolet;
   outline: none;
   border: none;
   border-radius: 20px;
@@ -23,10 +19,7 @@ body {
 }
 
 mat-toolbar {
-  background-color: #202020;
-  // position: sticky;
-  // position: -webkit-sticky; /* For macOS/iOS Safari */
-  // top: 0;
+  background-color: rgb(80, 19, 138);
 }
 
 .title {
@@ -45,7 +38,6 @@ mat-icon {
 .menu-button {
   margin-right: 10px;
   border: none;
-  background-color: #202020;
 }
 .sidenav {
   height: 100%;
@@ -64,13 +56,13 @@ mat-icon {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #6022d3;
+  color: blueviolet;
 }
 
 .sidenav .closebtn {
