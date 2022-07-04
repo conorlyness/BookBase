@@ -1,5 +1,6 @@
 .fav-books {
   text-align: center;
+  font-family: Bookman Old Style;
 }
 
 ul {
@@ -8,37 +9,49 @@ ul {
   margin: 0;
   margin-left: 100px;
   margin-right: 100px;
-  // text-align: center;
 }
 
 ul li {
   border: 1px solid #ddd;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
-  color: black;
   display: block;
   position: relative;
+  margin: 5px;
 }
 
 ul li:hover {
-  background-color: #eee;
+  background-color: blueviolet;
 }
 
 .remove-fav {
-  cursor: pointer;
   position: absolute;
   top: 50%;
   right: 1%;
   transform: translate(0%, -50%);
-  border-radius: 20px;
   border: none;
-  background-color: #f6f6f6;
 }
 
 .remove-fav:hover {
   background-color: rgb(197, 113, 113);
+}
+
+.all-favs {
+  height: calc(100vh - 64px);
+}
+
+.add-new-fav {
+  padding: 10px;
+}
+
+.add-new-fav-btn {
+  text-align: center;
+  background-color: blueviolet;
+}
+
+.add-new-fav-btn:hover {
+  background-color: rgb(154, 78, 224);
 }

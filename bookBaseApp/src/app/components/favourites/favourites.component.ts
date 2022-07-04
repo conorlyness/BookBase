@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { favouriteBook } from 'src/app/models/book.model';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { AddFavDialogComponent } from '../add-fav-dialog/add-fav-dialog.component';
 import { RemoveFavDialogComponent } from '../remove-fav-dialog/remove-fav-dialog.component';
 
 @Component({
@@ -45,7 +44,7 @@ export class FavouritesComponent implements OnInit {
     });
   }
 
-  openDialog(name: string): void {
+  openRemoveDialog(name: string): void {
     const dialogRef = this.dialog.open(RemoveFavDialogComponent, {
       data: { bookName: name },
     });
@@ -58,6 +57,25 @@ export class FavouritesComponent implements OnInit {
 
         this.snackbar.openSnackBar(
           `Removed ${this.dialogSelection.bookName} from favourites`,
+          ''
+        );
+        this.getAllFavouriteBooks();
+      }
+    });
+  }
+
+  openAddNewDialog(): void {
+    const dialogRef = this.dialog.open(AddFavDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.dialogSelection = result;
+      if (this.dialogSelection) {
+        console.log(this.dialogSelection);
+        this.favouritesService.addFavourite(this.dialogSelection).subscribe();
+
+        this.snackbar.openSnackBar(
+          `Added ${this.dialogSelection} to favourites`,
           ''
         );
         this.getAllFavouriteBooks();
