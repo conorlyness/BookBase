@@ -45,6 +45,24 @@ body {
   margin-right: 8px;
 }
 
+.ngx-pagination a,
+.ngx-pagination button {
+  color: blueviolet !important;
+}
+
+.ngx-pagination .current {
+  background: rgba(137, 43, 226, 0.562) !important;
+}
+
+.ngx-pagination .disabled {
+  color: blueviolet !important;
+}
+
+pagination-controls {
+  text-align: center;
+  padding-top: 5px;
+}
+
 // /* hide scrollbar but allow scrolling */
 // body {
 //   -ms-overflow-style: none; /* for Internet Explorer, Edge */
