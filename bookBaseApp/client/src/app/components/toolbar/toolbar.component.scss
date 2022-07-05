@@ -20,6 +20,9 @@
 
 mat-toolbar {
   background-color: rgb(80, 19, 138);
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }
 
 .title {
