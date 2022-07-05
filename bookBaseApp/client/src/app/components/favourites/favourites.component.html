@@ -1,0 +1,28 @@
+<div class="all-favs">
+  <div class="add-new-fav">
+    <button
+      mat-button
+      class="add-new-fav-btn"
+      [title]="'Add new favourite'"
+      (click)="openAddNewDialog()"
+    >
+      New Favourite
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <h1 class="fav-books">Favourite books</h1>
+
+  <ul class="fav-books-list" *ngFor="let book of books">
+    <li>
+      {{ book.BookName }}
+      <button
+        mat-icon-button
+        [title]="'remove'"
+        (click)="openRemoveDialog(book.BookName)"
+        class="remove-fav"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>

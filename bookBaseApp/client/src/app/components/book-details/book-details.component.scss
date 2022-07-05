@@ -1,0 +1,125 @@
+.book-banner-img {
+  height: 400px;
+  width: 100%;
+}
+
+.book {
+  &-img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: blur(1px);
+  }
+}
+
+.tile1 {
+  background-color: #592e6d;
+}
+
+.tile2 {
+  background-color: #6834d4;
+}
+
+.tile3 {
+  background-color: #7d5bc2;
+}
+
+.tile4 {
+  background-color: #6d3eb4;
+}
+
+mat-grid-tile:hover {
+  box-shadow: 4px 3px 11px 6px rgba(176, 5, 255, 0.46);
+  transform: translateY(-3px);
+}
+
+mat-grid-tile {
+  box-shadow: 4px 3px 8px 0px rgba(160, 8, 230, 0.22);
+}
+
+.book-title {
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  text-shadow: 0 0 20px black;
+  text-decoration: underline;
+  font-family: Bookman Old Style;
+  text-align: center;
+}
+
+.book-author {
+  padding-top: 10px;
+  text-align: center;
+  font-family: Bookman Old Style;
+  font-weight: lighter;
+}
+
+.book-release-date {
+  padding-top: 10px;
+  text-align: center;
+  font-family: Bookman Old Style;
+  font-weight: lighter;
+}
+
+.book-header-pages {
+  font-weight: 500;
+  font-size: 40px;
+  text-shadow: 0 0 2px white;
+  font-family: Bookman Old Style;
+}
+
+.book-synopsis {
+  font-weight: 500;
+  font-size: 30px;
+  text-shadow: 0 0 2px white;
+  text-align: center;
+  text-decoration: underline;
+  font-family: Bookman Old Style;
+}
+
+.book-synopsis-rating {
+  padding: 10px;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.synopsis-text {
+  font-size: 15px;
+  text-align: center;
+  font-family: Bookman Old Style;
+}
+
+.btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  background: #720ab8;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 5px;
+}
+.btn:hover {
+  background: #8354cffd;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+ngx-stars {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  width: 1100px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 50px !important;
+  padding-bottom: 0 !important;
+  height: calc(100vh - 64px);
+}

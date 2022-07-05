@@ -1,0 +1,53 @@
+<!-- home component -->
+
+<div class="filters">
+  <h1 class="home-title">Most popular books this week</h1>
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <mat-select
+      panelClass="sort-select"
+      [(ngModel)]="sort"
+      (selectionChange)="getPopularBooksByGenre(sort)"
+    >
+      <mat-option value="fiction">Fiction</mat-option>
+      <mat-option value="nonfiction">Non Fiction</mat-option>
+      <mat-option value="Psychology">Psychology</mat-option>
+      <mat-option value="self help">Self Help</mat-option>
+      <mat-option value="science fiction">Science Fiction</mat-option>
+      <mat-option value="mystery">Mystery</mat-option>
+      <mat-option value="horror">Horror</mat-option>
+      <mat-option value="thriller">Thriller </mat-option>
+      <mat-option value="fantasy">Fantasy</mat-option>
+      <mat-option value="childrens">Childrens</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="books">
+  <ng-container
+    *ngFor="
+      let book of popularBooks | paginate: { itemsPerPage: 10, currentPage: p }
+    "
+  >
+    <div
+      class="book"
+      [title]="book.name"
+      (click)="openBookDetails(book.book_id)"
+    >
+      <div class="book-thumb-container">
+        <img
+          *ngIf="book.cover"
+          src="{{ book.cover }}"
+          alt="thumbnail"
+          class="book-thumbnail"
+        />
+        <p *ngIf="!book.cover">No Image found</p>
+      </div>
+      <div class="book-description">
+        <p class="book-name">{{ book.name }}</p>
+      </div>
+    </div>
+  </ng-container>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<!-- end of home component -->

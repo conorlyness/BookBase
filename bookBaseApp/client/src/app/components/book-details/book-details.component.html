@@ -1,0 +1,66 @@
+<ng-container>
+  <mat-grid-list class="grid" cols="3" [gutterSize]="'10px'">
+    <div>
+      <mat-grid-tile class="tile1">
+        <div class="book-cover">
+          <img
+            [title]="book.name"
+            src="{{ book.cover }}"
+            alt="background image"
+            class="book-banner-img"
+          />
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="tile2">
+        <div class="book-name-author">
+          <h1 class="book-title">{{ book.name }}</h1>
+          <h2 class="book-author">Author: {{ book.authors }}</h2>
+          <h4 class="book-release-date">
+            Published: {{ book.published_date }}
+          </h4>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="tile3">
+        <div class="book-pages">
+          <h4 class="book-header-pages">Page Count: {{ book.pages }}</h4>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="tile4" [colspan]="3">
+        <div class="book-synopsis-rating">
+          <h4 class="book-synopsis">Book Synopsis</h4>
+          <p class="synopsis-text">
+            <span>{{ book.synopsis }}</span>
+          </p>
+
+          <div class="btn-container">
+            <button
+              [title]="'favourite'"
+              (click)="addToFav(book.name)"
+              class="btn"
+              #fav
+            >
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button
+              [title]="'more info'"
+              target="_blank"
+              class="btn"
+              (click)="followLink(book.url)"
+            >
+              <mat-icon>info</mat-icon>
+            </button>
+
+            <ngx-stars
+              [title]="'book rating'"
+              [readonly]="true"
+              [maxStars]="5"
+              [initialStars]="book.rating"
+              [color]="'#ffd700'"
+              [size]="1"
+            ></ngx-stars>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+</ng-container>
