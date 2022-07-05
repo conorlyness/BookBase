@@ -121,5 +121,5 @@ ngx-stars {
   margin: 0 auto;
   padding-top: 50px !important;
   padding-bottom: 0 !important;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
 }
