@@ -1,0 +1,15 @@
+<div class="currently-reading">
+  <mat-card>
+    <h1>Currently Reading</h1>
+    <button
+      mat-button
+      [title]="'Edit current book'"
+      class="edit"
+      (click)="openEditDialog()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <p class="book-title">{{ currentBook }}</p>
+  </mat-card>
+</div>

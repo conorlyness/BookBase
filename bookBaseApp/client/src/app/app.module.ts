@@ -29,6 +29,8 @@ import { AddFavDialogComponent } from './components/add-fav-dialog/add-fav-dialo
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { CurrentlyReadingComponent } from './components/currently-reading/currently-reading.component';
+import { CurrentlyReadingDialogComponent } from './components/currently-reading-dialog/currently-reading-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { MatButtonModule } from '@angular/material/button';
     FavouritesComponent,
     RemoveFavDialogComponent,
     AddFavDialogComponent,
+    CurrentlyReadingComponent,
+    CurrentlyReadingDialogComponent,
   ],
   imports: [
     BrowserModule,

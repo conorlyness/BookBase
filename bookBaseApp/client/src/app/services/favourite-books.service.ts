@@ -37,4 +37,14 @@ export class FavouriteBooksService {
     const url = environment.getSpecificFavouriteBookUrl + name;
     return this.http.get<Observable<any>>(url);
   }
+
+  currentlyReading() {
+    const url = environment.getCurrentlyReadingUrl;
+    return this.http.get<Observable<any>>(url);
+  }
+
+  updateCurrentlyReading(title: string) {
+    const url = environment.updateCurrentlyReadingUrl + title;
+    return this.http.post<Observable<any>>(url, {});
+  }
 }

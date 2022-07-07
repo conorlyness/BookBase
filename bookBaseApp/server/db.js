@@ -1,5 +1,5 @@
-var config = require("./config");
-const sql = require("mssql");
+var config = require('./config');
+const sql = require('mssql');
 
 class Database {
   constructor() {
@@ -9,7 +9,7 @@ class Database {
   connect = async () => {
     try {
       this.connection = await sql.connect(config);
-      console.log("Connected to database successfully");
+      console.log('Connected to database successfully');
     } catch (error) {
       console.log(error);
     }
@@ -53,6 +53,28 @@ class Database {
       let result = await this.connection
         .request()
         .query(`DELETE FROM dbo.Favourites WHERE BookName = '${name}';`);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getCurrentlyReading = async () => {
+    try {
+      let result = this.connection
+        .request()
+        .query('select top 1 * from dbo.CurrentlyReading;');
+      return (await result).recordset[0];
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  updateCurrentlyReading = async (title) => {
+    try {
+      let result = this.connection
+        .request()
+        .query(`UPDATE dbo.CurrentlyReading SET BookTitle='${title}';`);
       return result;
     } catch (error) {
       console.log(error);

@@ -12,6 +12,8 @@ export const environment = {
   deleteFavouriteBookUrl: 'http://localhost:3001/delete?bookName=',
   getSpecificFavouriteBookUrl:
     'http://localhost:3001/favourites/name?bookName=',
+  getCurrentlyReadingUrl: 'http://localhost:3001/currentlyReading',
+  updateCurrentlyReadingUrl: 'http://localhost:3001/updateCurrentBook?title=',
   XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
   XRapidAPIHostHeadervalue: 'hapi-books.p.rapidapi.com',
   XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
