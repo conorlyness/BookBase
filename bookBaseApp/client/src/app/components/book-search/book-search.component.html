@@ -1,5 +1,5 @@
 <div class="all-search-content">
-  <div class="books">
+  <div class="books" *ngIf="searchedBook; else noResults">
     <ng-container
       *ngFor="
         let book of searchedBook
@@ -22,6 +22,10 @@
         </div>
       </div>
     </ng-container>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+  <ng-template #noResults>
+    <h1 class="no-results">No results matching search.</h1>
+  </ng-template>
 </div>
