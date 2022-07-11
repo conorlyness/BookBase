@@ -8,11 +8,9 @@ import {
   ElementRef,
   HostBinding,
 } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -27,7 +25,7 @@ export class ToolbarComponent implements OnInit {
   ) {}
 
   @Output() searchInput = new EventEmitter<string>();
-  searchValue?: string;
+  search?: string;
 
   //using view child decorator
   //@ViewChild() with Template Variable using ElementRef to access Native Element
@@ -39,6 +37,7 @@ export class ToolbarComponent implements OnInit {
     // this.searchInput.emit(value);
 
     this.router.navigate(['search', value]);
+    this.search = '';
     if (value.length > 0) {
       this.snackbar.openSnackBar(`Showing results for ${value}`, '');
     }

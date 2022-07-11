@@ -16,7 +16,10 @@
       (change)="onSubmit(newSearch.value)"
       type="text"
       placeholder="Search Books"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Search Books'"
       name="book"
+      [(ngModel)]="search"
     />
   </div>
 </mat-toolbar>
