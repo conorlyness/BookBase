@@ -50,6 +50,14 @@
       </div>
     </ng-container>
   </div>
+  <button
+    [title]="'Version info'"
+    class="version_btn"
+    (click)="showVersionInfoComponent()"
+  >
+    <mat-icon>info</mat-icon>
+  </button>
+  <ng-template #dynamic></ng-template>
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 <!-- end of home component -->

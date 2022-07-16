@@ -31,6 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CurrentlyReadingComponent } from './components/currently-reading/currently-reading.component';
 import { CurrentlyReadingDialogComponent } from './components/currently-reading-dialog/currently-reading-dialog.component';
+import { VersionInfoComponent } from './components/version-info/version-info.component';
+import { VersionInfoDialogComponent } from './components/version-info-dialog/version-info-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,8 @@ import { CurrentlyReadingDialogComponent } from './components/currently-reading-
     AddFavDialogComponent,
     CurrentlyReadingComponent,
     CurrentlyReadingDialogComponent,
+    VersionInfoComponent,
+    VersionInfoDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -111,3 +111,19 @@
 .all-home-content {
   min-height: calc(100vh - 64px);
 }
+
+.version_btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  background: #720ab8;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 5px;
+}
+.version_btn:hover {
+  background: #8354cffd;
+}
