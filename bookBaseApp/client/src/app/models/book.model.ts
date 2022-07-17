@@ -29,5 +29,9 @@ export interface bookById {
 }
 
 export interface favouriteBook {
-  name: string;
+  BookName: string;
+}
+
+export interface currentBook {
+  BookTitle: string;
 }
