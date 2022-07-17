@@ -11,7 +11,6 @@ import { RemoveFavDialogComponent } from '../remove-fav-dialog/remove-fav-dialog
   styleUrls: ['./favourites.component.scss'],
 })
 export class FavouritesComponent implements OnInit {
-  favourites: any;
   books?: any;
   dialogSelection?: any;
 
