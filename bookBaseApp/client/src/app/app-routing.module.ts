@@ -4,6 +4,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { BookSearchComponent } from './components/book-search/book-search.component';
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { HomeComponent } from './components/home/home.component';
+import { MostPopularMonthAndYearComponent } from './components/most-popular-month-and-year/most-popular-month-and-year.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
     //favourites page
     path: 'favourites',
     component: FavouritesComponent,
+  },
+  {
+    //most popular books in a specific month & year
+    path: 'popularByMonth',
+    component: MostPopularMonthAndYearComponent,
   },
 ];
 

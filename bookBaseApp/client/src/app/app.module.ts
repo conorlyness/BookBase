@@ -33,6 +33,7 @@ import { CurrentlyReadingComponent } from './components/currently-reading/curren
 import { CurrentlyReadingDialogComponent } from './components/currently-reading-dialog/currently-reading-dialog.component';
 import { VersionInfoComponent } from './components/version-info/version-info.component';
 import { VersionInfoDialogComponent } from './components/version-info-dialog/version-info-dialog.component';
+import { MostPopularMonthAndYearComponent } from './components/most-popular-month-and-year/most-popular-month-and-year.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { VersionInfoDialogComponent } from './components/version-info-dialog/ver
     CurrentlyReadingDialogComponent,
     VersionInfoComponent,
     VersionInfoDialogComponent,
+    MostPopularMonthAndYearComponent,
   ],
   imports: [
     BrowserModule,

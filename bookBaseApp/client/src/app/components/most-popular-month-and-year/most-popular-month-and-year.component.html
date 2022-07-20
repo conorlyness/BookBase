@@ -1,0 +1,53 @@
+<div class="most-popular-content">
+  <div class="filters">
+    <h1 class="home-title">Most popular books by Month and year</h1>
+    <mat-form-field>
+      <mat-label>Month</mat-label>
+      <mat-select panelClass="sort-select" [(ngModel)]="sortMonth">
+        <mat-option value="1">January</mat-option>
+        <mat-option value="2">February</mat-option>
+        <mat-option value="3">March</mat-option>
+        <mat-option value="4">April</mat-option>
+        <mat-option value="5">May</mat-option>
+        <mat-option value="6">June</mat-option>
+        <mat-option value="7">July</mat-option>
+        <mat-option value="8">August</mat-option>
+        <mat-option value="9">September</mat-option>
+        <mat-option value="10">October</mat-option>
+        <mat-option value="11">November</mat-option>
+        <mat-option value="12">December</mat-option>
+      </mat-select>
+    </mat-form-field>
+    {{ sortMonth }}
+    <mat-form-field>
+      <mat-label>Year</mat-label>
+      <mat-select panelClass="sort-select" [(ngModel)]="sortYear">
+        <mat-option value="2022">2022</mat-option>
+        <mat-option value="2021">2021</mat-option>
+        <mat-option value="2020">2020</mat-option>
+        <mat-option value="2019">2019</mat-option>
+      </mat-select>
+    </mat-form-field>
+    {{ sortYear }}
+    <div
+      class="execute-search-btn"
+      *ngIf="sortMonth != '' && sortYear != ''; then searchBooks"
+    ></div>
+  </div>
+  <ng-container *ngIf="!selectedFutureDate; else futureDateError">
+    <ng-container *ngFor="let book of books">
+      <p>{{ book.name }}</p>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #searchBooks>
+  <button (click)="getMostPopularMonthYear(sortMonth, sortYear)">Find</button>
+</ng-template>
+
+<ng-template #futureDateError>
+  <h1>
+    The most popular books cannot be fetched as the date provided is in the
+    future.
+  </h1>
+</ng-template>
