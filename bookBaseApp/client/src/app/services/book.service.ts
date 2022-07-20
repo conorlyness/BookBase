@@ -6,7 +6,12 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { bookByGenre, bookById, bookByName } from '../models/book.model';
+import {
+  bookByGenre,
+  bookById,
+  bookByMonthYear,
+  bookByName,
+} from '../models/book.model';
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +62,23 @@ export class BookService {
           environment.XRapidAPIKeyHeaderValue
         ),
     });
+  }
+
+  getMostPopularByMonthYear(month: string, year: string) {
+    return this.http.get<bookByMonthYear>(
+      environment.mostPopularByMonthYear + year + '/' + month,
+      {
+        headers: new HttpHeaders()
+          .set(
+            environment.XRapidAPIHostHeaderName,
+            environment.XRapidAPIHostHeadervalue
+          )
+          .set(
+            environment.XRapidAPIKeyHeaderName,
+            environment.XRapidAPIKeyHeaderValue
+          ),
+      }
+    );
   }
 
   //using the google books api instead

@@ -35,3 +35,12 @@ export interface favouriteBook {
 export interface currentBook {
   BookTitle: string;
 }
+
+export interface bookByMonthYear {
+  book_id: string;
+  position: string;
+  name: string;
+  cover: string;
+  rating: number;
+  url: string;
+}
