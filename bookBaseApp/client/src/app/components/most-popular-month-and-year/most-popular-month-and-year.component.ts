@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookService } from 'src/app/services/book.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
@@ -10,7 +11,8 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 export class MostPopularMonthAndYearComponent implements OnInit {
   constructor(
     private bookService: BookService,
-    private snackBarService: SnackbarService
+    private snackBarService: SnackbarService,
+    private router: Router
   ) {}
 
   d: any = new Date();
@@ -46,5 +48,10 @@ export class MostPopularMonthAndYearComponent implements OnInit {
           },
         });
     }
+  }
+
+  //this method is to navigate to a new page with the book id as a parameter so it can be used in the book-details component
+  openBookDetails(id: string): void {
+    this.router.navigate(['details', id]);
   }
 }
