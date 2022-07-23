@@ -18,7 +18,7 @@
         <mat-option value="12">December</mat-option>
       </mat-select>
     </mat-form-field>
-    {{ sortMonth }}
+
     <mat-form-field>
       <mat-label>Year</mat-label>
       <mat-select panelClass="sort-select" [(ngModel)]="sortYear">
@@ -28,12 +28,10 @@
         <mat-option value="2019">2019</mat-option>
       </mat-select>
     </mat-form-field>
-    {{ sortYear }}
-    <div
-      class="execute-search-btn"
-      *ngIf="sortMonth != '' && sortYear != ''; then searchBooks"
-    ></div>
   </div>
+  <ng-container
+    *ngIf="sortMonth != '' && sortYear != ''; then searchBooksBtn"
+  ></ng-container>
   <ng-container *ngIf="!selectedFutureDate; else futureDateError">
     <div class="books">
       <ng-container *ngFor="let book of books">
@@ -61,8 +59,16 @@
   </ng-container>
 </div>
 
-<ng-template #searchBooks>
-  <button (click)="getMostPopularMonthYear(sortMonth, sortYear)">Find</button>
+<ng-template #searchBooksBtn>
+  <div class="execute-search-btn-div">
+    <button
+      mat-button
+      class="find-books-btn"
+      (click)="getMostPopularMonthYear(sortMonth, sortYear)"
+    >
+      Find
+    </button>
+  </div>
 </ng-template>
 
 <ng-template #futureDateError>

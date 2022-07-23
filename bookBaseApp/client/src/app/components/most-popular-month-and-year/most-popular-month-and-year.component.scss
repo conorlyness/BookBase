@@ -2,6 +2,16 @@
   min-height: calc(100vh - 64px);
 }
 
+.home-title {
+  text-align: center;
+  font-family: Bookman Old Style;
+  padding-top: 40px;
+}
+
+.filters {
+  text-align: center;
+}
+
 .books {
   display: flex;
   flex-wrap: wrap;
@@ -68,4 +78,17 @@
     overflow: hidden;
     text-align: center;
   }
+}
+
+.find-books-btn {
+  text-align: center;
+  background-color: blueviolet;
+}
+
+.find-books-btn {
+  background-color: rgb(154, 78, 224);
+}
+
+.execute-search-btn-div {
+  text-align: center;
 }
