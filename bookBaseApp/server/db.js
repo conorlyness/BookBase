@@ -30,7 +30,7 @@ class Database {
     try {
       const result = await this.connection.request().query(`SELECT *
       FROM dbo.Favourites
-      WHERE BookName LIKE ('${name}');`);
+      WHERE BookName = ('${name}');`);
       return result.recordset;
     } catch (error) {
       console.log(error);
