@@ -47,21 +47,23 @@ export class HomeComponent implements OnInit {
     this.bookService.getWeeksPopularBooks(genre).subscribe({
       next: (response) => {
         this.popularBooks = response;
+        this.sort = '';
       },
     });
   }
 
   addToFav(name: string) {
     this.isFav = true;
-    this.favouritesService.addFavourite(name).subscribe(
-      (response: any) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log('error adding to favourites: ', error);
-      }
-    );
-    this.snackbar.openSnackBar(`Added ${name} to favourites`, '');
+    try{
+      this.favouritesService.addFavourite(name).subscribe(
+        (response: any) => {
+          console.log(response);
+        });
+      this.snackbar.openSnackBar(`Added ${name} to favourites`, '');
+    } catch (err)
+    {
+      console.log("error adding to favourite")
+    }
   }
 
   showVersionInfoComponent() {
