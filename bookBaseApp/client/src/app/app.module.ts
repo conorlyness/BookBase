@@ -34,7 +34,6 @@ import { CurrentlyReadingDialogComponent } from './components/currently-reading-
 import { VersionInfoComponent } from './components/version-info/version-info.component';
 import { VersionInfoDialogComponent } from './components/version-info-dialog/version-info-dialog.component';
 import { MostPopularMonthAndYearComponent } from './components/most-popular-month-and-year/most-popular-month-and-year.component';
-import { ClearMatSelectComponent } from './components/clear-mat-select/clear-mat-select.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +49,6 @@ import { ClearMatSelectComponent } from './components/clear-mat-select/clear-mat
     VersionInfoComponent,
     VersionInfoDialogComponent,
     MostPopularMonthAndYearComponent,
-    ClearMatSelectComponent,
   ],
   imports: [
     BrowserModule,

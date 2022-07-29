@@ -70,9 +70,4 @@ export class HomeComponent implements OnInit {
     this.componentRef.clear();
     this.componentRef.createComponent(VersionInfoComponent);
   }
-
-  
-  consumeChildsOutput(event:string) {
-    this.sort = event;
-  }
 }
