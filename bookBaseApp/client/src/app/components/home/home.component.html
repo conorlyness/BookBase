@@ -23,6 +23,10 @@
     </mat-form-field>
   </div>
 
+  <div class="child-comp">
+    <app-clear-mat-select (setToDefault)="consumeChildsOutput($event)"></app-clear-mat-select>
+  </div>
+
   <div class="books">
     <ng-container
       *ngFor="
