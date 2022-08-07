@@ -4,10 +4,12 @@ import {
   EventEmitter,
   OnInit,
   Output,
+  SimpleChanges,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
 import { BookService } from 'src/app/services/book.service';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -34,10 +36,43 @@ export class HomeComponent implements OnInit {
   @ViewChild('dynamic', { read: ViewContainerRef })
   private componentRef!: ViewContainerRef;
 
-  //TODO: change this so it calls get weeks popular books with a input from the user, via a dropdown
+
+  //create object and observable to subscribe to it
+  saleStatusObj = {isSaleOn: false}
+
+  // observable
+  salesStatus$ = new Observable((observer) =>{
+    observer.next(this.saleStatusObj.isSaleOn);
+  })
+
+  //Subject which implements both the Observable and the Observer interfaces:
+  saleStatusSubject = new Subject<Boolean>();
+
+  //interval
+  saleInterval!:any
+
   ngOnInit(): void {
     this.getPopularBooksByGenre('non fiction');
+    this.salesStatus$.subscribe({
+      next(value) {
+          console.log("%cThe sale value is ", "color: yellow", value);
+      },
+    });
+
+    this.saleStatusSubject.subscribe({
+      next(value) {
+          console.log("%cThe sale value from subject is ", "color: yellow", value);
+      },
+    })
+    console.log("after subscrible");
+
+    // this.saleInterval = setInterval(() => {
+    //   this.toggleSale()
+    // }, 10000);
+
   }
+
+
   //this method is to navigate to a new page with the book id as a parameter so it can be used in the book-details component
   openBookDetails(id: string): void {
     this.router.navigate(['details', id]);
@@ -69,5 +104,18 @@ export class HomeComponent implements OnInit {
   showVersionInfoComponent() {
     this.componentRef.clear();
     this.componentRef.createComponent(VersionInfoComponent);
+  }
+
+  toggleSale() {
+    //update the subject
+    this.saleStatusSubject.next(this.saleStatusObj.isSaleOn = this.saleStatusObj.isSaleOn !== true);
+    //log the object, it should be the opposite of before
+    console.log(this.saleStatusObj)
+
+    this.salesStatus$.subscribe((val) => {
+      console.log("observerable: ",val)
+    })
+
+    
   }
 }

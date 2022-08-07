@@ -23,6 +23,15 @@
     </mat-form-field>
   </div>
 
+
+  <div class="sale-status" *ngIf="saleStatusObj.isSaleOn">
+    <mat-card>Sale is on!</mat-card>
+  </div>
+
+  <div class="sale-btn">
+    <button (click)="toggleSale()">Sale!</button>
+  </div>
+
   <div class="books">
     <ng-container
       *ngFor="
