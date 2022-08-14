@@ -14,6 +14,8 @@ import { BookService } from 'src/app/services/book.service';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { VersionInfoComponent } from '../version-info/version-info.component';
+import { BookGridViewComponent } from '../book-grid-view/book-grid-view.component';
+import { BookListViewComponent } from '../book-list-view/book-list-view.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,15 +24,19 @@ import { VersionInfoComponent } from '../version-info/version-info.component';
 export class HomeComponent implements OnInit {
   constructor(
     private bookService: BookService,
-    private router: Router,
+    
     private favouritesService: FavouriteBooksService,
     private snackbar: SnackbarService
   ) {}
 
   public sort: string = '';
-  public popularBooks?: any;
+  public payload?: any;
   public isFav: boolean = false;
   p: number = 1;
+  defaultView: boolean = true;
+  matIcon: string = 'list';
+  tooltip: string = 'change to list view';
+  isLoading: boolean = true;
 
   //used for dynamic component loading
   @ViewChild('dynamic', { read: ViewContainerRef })
@@ -69,19 +75,14 @@ export class HomeComponent implements OnInit {
     // this.saleInterval = setInterval(() => {
     //   this.toggleSale()
     // }, 10000);
-
   }
 
-
-  //this method is to navigate to a new page with the book id as a parameter so it can be used in the book-details component
-  openBookDetails(id: string): void {
-    this.router.navigate(['details', id]);
-  }
 
   getPopularBooksByGenre(genre: string) {
     this.bookService.getWeeksPopularBooks(genre).subscribe({
       next: (response) => {
-        this.popularBooks = response;
+        this.payload = response;
+        this.isLoading = false;
         this.sort = '';
       },
     });
@@ -115,7 +116,17 @@ export class HomeComponent implements OnInit {
     this.salesStatus$.subscribe((val) => {
       console.log("observerable: ",val)
     })
+  }
 
-    
+  //used to change the view on the home page, users can either change from the default grid view to a list view instead
+  changeView() {
+    this.defaultView = !this.defaultView;
+    if (this.defaultView) {
+      this.matIcon = 'list'
+      this.tooltip = 'change to list view'
+    } else {
+      this.matIcon = 'grid_on'
+      this.tooltip = 'change to grid view'
+    }
   }
 }
