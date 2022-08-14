@@ -34,6 +34,10 @@ import { CurrentlyReadingDialogComponent } from './components/currently-reading-
 import { VersionInfoComponent } from './components/version-info/version-info.component';
 import { VersionInfoDialogComponent } from './components/version-info-dialog/version-info-dialog.component';
 import { MostPopularMonthAndYearComponent } from './components/most-popular-month-and-year/most-popular-month-and-year.component';
+import { BookGridViewComponent } from './components/book-grid-view/book-grid-view.component';
+import { BookListViewComponent } from './components/book-list-view/book-list-view.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +53,8 @@ import { MostPopularMonthAndYearComponent } from './components/most-popular-mont
     VersionInfoComponent,
     VersionInfoDialogComponent,
     MostPopularMonthAndYearComponent,
+    BookGridViewComponent,
+    BookListViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +78,8 @@ import { MostPopularMonthAndYearComponent } from './components/most-popular-mont
     MatSlideToggleModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,14 @@
+<div class="books">
+  <mat-list *ngFor="let book of popularBooks| paginate: { itemsPerPage: 10, currentPage: p }">
+    <mat-list-item class="book" [title]="book.name" (click)="openBookDetails(book.book_id)">
+      <mat-icon mat-list-icon>book</mat-icon>
+      <div mat-line>{{book.name}}<img
+        *ngIf="book.cover"
+        src="{{ book.cover }}"
+        alt="thumbnail"
+        class="book-thumbnail"
+      /></div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>
