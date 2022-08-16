@@ -1,0 +1,33 @@
+.create-user-form{
+    min-height: calc(100vh - 64px);
+    padding: 50px;
+}
+
+.create-user-form-body{
+    padding-top: 50px;
+    width: 500px;
+    height: 600px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #202020;
+}
+
+.form-group{
+    padding: 10px;
+}
+
+h4{
+    text-align: center;
+    font-family: Bookman Old Style;
+    font-size: 30px;
+    padding-bottom: 15px;
+}
+
+.createBtn{
+    background-color: blueviolet;
+}
+
+mat-form-field, button{
+    width: 90%;
+    border-radius: 30px;
+}

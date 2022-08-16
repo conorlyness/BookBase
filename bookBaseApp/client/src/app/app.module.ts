@@ -38,6 +38,8 @@ import { BookGridViewComponent } from './components/book-grid-view/book-grid-vie
 import { BookListViewComponent } from './components/book-list-view/book-list-view.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatListModule} from '@angular/material/list';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +57,8 @@ import {MatListModule} from '@angular/material/list';
     MostPopularMonthAndYearComponent,
     BookGridViewComponent,
     BookListViewComponent,
+    CreateUserComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
