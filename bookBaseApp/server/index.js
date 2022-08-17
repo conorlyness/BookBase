@@ -88,6 +88,24 @@ app.post("/newUser", async (req, res) => {
 
 })
 
+//login
+app.post('/login', async (req, res) => {
+  console.log("calling /login");
+  const {email, password} = req.body;
+  console.log(req.body)
+  if (!email || !password) {
+    return res.status(400).json({ message: "bad request"});
+  }
+  
+  const user = await db.loginUser(req.body);
+  if (user) {
+    return res.status(201).json({ userId: user.UserId });
+  }
+
+  res.status(403).json({ message: "forbidden" });
+  res.end();
+})
+
 app.listen(API_PORT, () => {
   db.connect();
   console.log(`listening on port ${API_PORT}`);

@@ -94,6 +94,24 @@ class Database {
     }
   }
 
+  loginUser = async (user) => {
+    try {
+      const result = this.connection
+      .request()
+      .query(`SELECT UserId FROM dbo.Users WHERE Email = '${user.email}' AND Password = '${user.password}';`);
+      let results = JSON.stringify(await result);
+      let record = JSON.parse(results);
+
+      if (record.recordset[0]) {
+        return record.recordset[0]
+      } else {
+        return {}
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  } 
+
 }
 
 module.exports = new Database();

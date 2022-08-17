@@ -16,6 +16,7 @@ export const environment = {
   updateCurrentlyReadingUrl: 'http://localhost:3001/updateCurrentBook?title=',
   mostPopularByMonthYear: 'https://hapi-books.p.rapidapi.com/month/',
   createNewUserUrl: 'http://localhost:3001/newUser',
+  loginUserUrl: 'http://localhost:3001/login',
   XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
   XRapidAPIHostHeadervalue: 'hapi-books.p.rapidapi.com',
   XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
