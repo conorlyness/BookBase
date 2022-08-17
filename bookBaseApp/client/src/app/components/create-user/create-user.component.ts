@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { AuthenticateService } from 'src/app/services/authenticate.service';
 
 @Component({
   selector: 'app-create-user',
@@ -9,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CreateUserComponent implements OnInit {
 
-  form!: FormGroup;
   loading = false;
   submitted = false;
   firstName = new FormControl('', [Validators.required]);
@@ -21,6 +22,8 @@ export class CreateUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private snackbarService: SnackbarService,
+    private authService: AuthenticateService,
   ) { }
 
   ngOnInit(): void {
@@ -55,10 +58,19 @@ export class CreateUserComponent implements OnInit {
 
 
   onSubmit() {
-    if (this.firstName && this.lastName && this.email && this.password) {
+    if (!this.firstName.valid || !this.lastName.valid || !this.email.valid || !this.password.valid) {
+      console.log("error")
+      this.snackbarService.openSnackBar("Invalid fields, please retry","")
+    } else {
       console.log("form submitted: ", this.firstName.value, this.lastName.value, this.email.value, this.password.value);
+      const user = {firstName: this.firstName.value, lastName: this.lastName.value, email: this.email.value, password: this.password.value}
+      //add some logic here, make a call to the auth service and a func to check if there is a user in the db with this email already, if so then 
+      //output an error message in a snackbar "account with this email already exists"
+      this.authService.createUser(user).subscribe({});
+      }
+      this.snackbarService.openSnackBar("Account successfully created","")
+      this.router.navigate(['/login']);
     }
-    //else output some error message
+
   }
 
-}
