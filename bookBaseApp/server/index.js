@@ -10,6 +10,7 @@ app.use(cors());
 //API routes
 
 app.get('/favourites', async (req, res) => {
+  console.log("calling /favourites");
   const viewAllFavourites = await db.viewAllFavourites();
   if (viewAllFavourites) {
     return res.status(201).json(viewAllFavourites);
@@ -19,6 +20,7 @@ app.get('/favourites', async (req, res) => {
 });
 
 app.post('/add', async (req, res) => {
+  console.log("calling /add");
   const result = await db.addFavourite(req.query.bookName);
   if (result) {
     return res.status(201).json(result);
@@ -28,6 +30,7 @@ app.post('/add', async (req, res) => {
 });
 
 app.delete('/delete', async (req, res) => {
+  console.log("calling /delete");
   const result = await db.removeFavourite(req.query.bookName);
   if (result) {
     return res.status(201).json(result);
@@ -38,6 +41,7 @@ app.delete('/delete', async (req, res) => {
 
 //use to get a specific favourite book
 app.get('/favourites/name', async (req, res) => {
+  console.log("calling /favourites/name");
   const viewSpecificFavourite = await db.viewSpecificFavourite(
     req.query.bookName
   );
@@ -49,6 +53,7 @@ app.get('/favourites/name', async (req, res) => {
 });
 
 app.get('/currentlyReading', async (req, res) => {
+  console.log("calling /currentlyReading");
   const currentlyReading = await db.getCurrentlyReading();
   if (currentlyReading) {
     return res.status(201).json(currentlyReading.BookTitle);
@@ -58,6 +63,7 @@ app.get('/currentlyReading', async (req, res) => {
 });
 
 app.post('/updateCurrentBook', async (req, res) => {
+  console.log("calling /updateCurrentBook");
   const result = await db.updateCurrentlyReading(req.query.title);
   if (result) {
     return res.status(201).json(result);
@@ -65,6 +71,22 @@ app.post('/updateCurrentBook', async (req, res) => {
 
   res.status(404);
 });
+
+//create user endpoint
+app.post("/newUser", async (req, res) => {
+  console.log("calling /newUser");
+  const {firstName, lastName, email, password} = req.body;
+  if (!firstName || !lastName || !email || !password) {
+    return res.status(400).json({ message: "bad request"});
+  }
+  const result = await db.createUser(req.body);
+  if (result.rowsAffected[0] === 1) {
+    return res.status(201).json({ message: "created" });
+  }
+  res.status(403).json({ message: "forbidden" });
+  res.end();
+
+})
 
 app.listen(API_PORT, () => {
   db.connect();

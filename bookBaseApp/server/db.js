@@ -80,6 +80,20 @@ class Database {
       console.log(error);
     }
   };
+
+  createUser = async (user) => {
+    try {
+      let newUser = this.connection
+        .request()
+        .query(`INSERT INTO dbo.Users VALUES
+        ('${user.firstName}', '${user.lastName}', '${user.email}', '${user.password}', ${0})`);
+      return newUser;
+ 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 }
 
 module.exports = new Database();
