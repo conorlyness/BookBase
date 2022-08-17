@@ -9,7 +9,9 @@
     height: 600px;
     text-align: center;
     margin: 0 auto;
-    background-color: #202020;
+    border: 1px solid;
+    padding-top: 40px;
+    box-shadow: 5px 10px blueviolet;
 }
 
 .form-group{
@@ -28,6 +30,29 @@ h4{
 }
 
 mat-form-field, button{
-    width: 90%;
-    border-radius: 30px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+a {
+    font-size: 20px;
+    font-family: Bookman Old Style;
+    padding-top: 30px;
+    display: block;
+    color: rgb(177, 112, 250);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+mat-icon {
+    position: relative;
+    /* Adjust these values accordingly */
+    top: 6px;
+    left: 5px;
+}
+
+a:hover {
+    color: blueviolet;
+    background-color: transparent;
+    text-decoration: underline;
 }
