@@ -14,4 +14,9 @@ export class AuthenticateService {
     const url = environment.createNewUserUrl;
     return this.http.post<Observable<any>>(url, user);
   }
+
+  loginUser(user: object) {
+    const url = environment.loginUserUrl;
+    return this.http.post<Observable<any>>(url, user);
+  }
 }
