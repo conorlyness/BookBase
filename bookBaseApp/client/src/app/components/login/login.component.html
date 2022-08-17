@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="login-user-form">
+    <div class="login-user-form-body">
+        <form>
+            <h4>Login</h4>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="email@example.com" [formControl]="email" required>
+                  </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" [formControl]="password" required>
+                  </mat-form-field>
+            </div>
+            
+            <button class="loginBtn" mat-button (click)="onSubmit()" >
+                Login
+              </button>
+
+              <a routerLink="/create">new here?	<mat-icon>account_circle</mat-icon></a>
+        </form>
+    </div>
+</div>
