@@ -7,39 +7,40 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MostPopularMonthAndYearComponent } from './components/most-popular-month-and-year/most-popular-month-and-year.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
     //default route
-    path: '',
-    component: HomeComponent,
+    path: 'home',
+    component: HomeComponent, canActivate:[AuthenticationGuard]
   },
   {
     path: 'create',
     component: CreateUserComponent,
   },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
     path: 'search/:bookName',
-    component: BookSearchComponent,
+    component: BookSearchComponent, canActivate:[AuthenticationGuard]
   },
   {
     //book details page
     path: 'details/:id',
-    component: BookDetailsComponent,
+    component: BookDetailsComponent, canActivate:[AuthenticationGuard]
   },
   {
     //favourites page
     path: 'favourites',
-    component: FavouritesComponent,
+    component: FavouritesComponent, canActivate:[AuthenticationGuard]
   },
   {
     //most popular books in a specific month & year
     path: 'popularByMonth',
-    component: MostPopularMonthAndYearComponent,
+    component: MostPopularMonthAndYearComponent, canActivate:[AuthenticationGuard]
   },
 ];
 
