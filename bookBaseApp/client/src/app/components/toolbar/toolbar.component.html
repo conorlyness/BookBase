@@ -2,14 +2,13 @@
   <button
     [title]="'Menu'"
     mat-icon-button
-    (click)="openNav()"
+    (click)="toggleNav()"
     class="menu-button"
   >
     <mat-icon>menu</mat-icon>
   </button>
-  <a href="/" class="title">Book Base</a>
-  <span class="example-spacer"></span>
-  <ng-content></ng-content>
+  <a href="/home" class="title">Book Base</a>
+  
   <div class="search">
     <input
       #newSearch
@@ -22,11 +21,25 @@
       [(ngModel)]="search"
     />
   </div>
+
+  <span class="example-spacer"></span>
+  
+  <ng-content></ng-content>
+  <button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="">
+    <mat-icon class="profileMenu">account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>logout</span>
+    </button>
+
+  </mat-menu>
 </mat-toolbar>
 
 <div id="mySidenav" class="sidenav" #sideNav>
   <a class="closebtn" (click)="closeNav()">&times;</a>
-  <a href="/">
+  <a href="/home">
     <mat-icon aria-hidden="false">home</mat-icon>
     Home
   </a>
