@@ -40,6 +40,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatListModule} from '@angular/material/list';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthenticateService } from './services/authenticate.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +87,7 @@ import { LoginComponent } from './components/login/login.component';
     MatProgressSpinnerModule,
     MatListModule
   ],
-  providers: [],
+  providers: [AuthenticateService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

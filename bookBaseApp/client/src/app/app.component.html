@@ -1,5 +1,7 @@
 <div class="content mat-app-background">
   <!-- tool bar stays on top -->
+  <!-- have no nav/toolbar at start as the first thing the user see's is the login screen -->
+  <ng-container *ngIf="nav.visible">
   <app-toolbar (searchInput)="displaySearchTerm($event)">
     <div class="change-theme">
       <mat-icon class="mr-8">brightness_5</mat-icon>
@@ -12,6 +14,7 @@
       <mat-icon>bedtime</mat-icon>
     </div>
   </app-toolbar>
+</ng-container>
   <!-- all components are being loaded through the router outlet -->
   <router-outlet></router-outlet>
 </div>
