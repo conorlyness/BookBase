@@ -11,6 +11,7 @@ import {
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { AuthenticateService } from 'src/app/services/authenticate.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -21,11 +22,13 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private router: Router,
     @Inject(DOCUMENT) document: Document,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private authService: AuthenticateService,
   ) {}
 
   @Output() searchInput = new EventEmitter<string>();
   search?: string;
+  navOpen?: boolean = false;
 
   //using view child decorator
   //@ViewChild() with Template Variable using ElementRef to access Native Element
@@ -44,7 +47,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   returnHome(): void {
-    this.router.navigate(['']);
+    this.router.navigate(['/home']);
   }
 
   gotoFavourites(): void {
@@ -52,15 +55,25 @@ export class ToolbarComponent implements OnInit {
   }
 
   openNav() {
-    // (<HTMLInputElement>document.getElementById('mySidenav')).style.width =
-    //   '250px';
-
     this.elSideNav.nativeElement.style.width = '250px';
+    this.navOpen = true;
   }
 
   closeNav() {
-    // (<HTMLInputElement>document.getElementById('mySidenav')).style.width = '0';
-
     this.elSideNav.nativeElement.style.width = '0';
+    this.navOpen = false;
+  }
+
+  toggleNav() {
+    if (this.navOpen) {
+      this.closeNav();
+    }
+    else {
+      this.openNav();
+    }
+  }
+
+  logout() {
+    this.authService.logoutUser();
   }
 }
