@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
@@ -16,12 +17,14 @@ export class LoginComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   isValidLogin!: any;
 
+
   constructor(    
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private snackbarService: SnackbarService,
-    private authService: AuthenticateService,) { }
+    private authService: AuthenticateService,
+    public nav: NavbarService) { }
 
   ngOnInit(): void {
   }
@@ -40,7 +43,10 @@ export class LoginComponent implements OnInit {
           this.isValidLogin = value;
           if (this.isValidLogin.userId) {
               this.snackbarService.openSnackBar("Login Successful, welcome back","");
-              this.router.navigate(['']);
+              localStorage.setItem("sessionUserId", this.isValidLogin.userId)
+              //now that its a valid login we can show the navbar
+              this.nav.showNav();
+              this.router.navigate(['/home']);
             }
             else {
               this.password.reset();
