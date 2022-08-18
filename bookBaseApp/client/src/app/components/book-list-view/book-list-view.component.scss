@@ -8,13 +8,13 @@
     overflow: hidden;
     border-radius: 5px;
     background-color: #202020;
-    box-shadow: 1px 1px 3px 0px rgb(158, 87, 224);
+    box-shadow: 1px 1px 3px 0px rgb(42, 3, 78); ;
     transition-duration: 0.3s;
     cursor: pointer;
-  
+
     &:hover {
-      box-shadow: 4px 3px 11px 6px rgb(146, 68, 235);
-      transform: translateY(-3px);
+    box-shadow: 4px 3px 11px 6px rgb(42, 3, 78); ;
+    transform: translateY(-3px);
     }
 
     &-thumbnail {
@@ -25,5 +25,15 @@
         // margin: 0 auto;
         padding-right: 10px;
         height: 55.99px;
+    }
+
+    &-name {
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
     }
 }
