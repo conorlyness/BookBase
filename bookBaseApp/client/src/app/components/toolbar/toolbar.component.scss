@@ -3,19 +3,25 @@
 }
 
 .search {
-  text-align: center;
+  padding-left: 690px;
   font-size: large;
 }
 
 .search input {
-  background-color: blueviolet;
+  background-color: rgb(42, 3, 78); 
+  box-shadow: 2px 1px rgb(255, 255, 255);
   outline: none;
   border: none;
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 1em;
   color: rgb(255, 255, 255);
   font-size: 0.8em;
   text-align: center;
+  width: 400px;
+}
+
+.profileMenu {
+  transform: scale(2);
 }
 
 mat-toolbar {
@@ -49,7 +55,7 @@ mat-icon {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #202020;
+  background-color: rgb(42, 3, 78);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
