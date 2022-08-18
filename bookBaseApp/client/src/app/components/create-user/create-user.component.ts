@@ -69,7 +69,7 @@ export class CreateUserComponent implements OnInit {
       this.authService.createUser(user).subscribe({});
       }
       this.snackbarService.openSnackBar("Account successfully created","")
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
     }
 
   }
