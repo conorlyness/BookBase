@@ -1,17 +1,20 @@
 const express = require('express');
 const db = require('./db');
 const cors = require('cors');
+// const bp = require('body-parser')
 const app = express();
 const API_PORT = 3001;
 
 app.use(express.json());
 app.use(cors());
+// app.use(bp.urlencoded({ extended: true }))
+// app.use(bp.json())
 
 //API routes
 
 app.get('/favourites', async (req, res) => {
   console.log("calling /favourites");
-  const viewAllFavourites = await db.viewAllFavourites();
+  const viewAllFavourites = await db.viewAllFavourites(req.query.userId);
   if (viewAllFavourites) {
     return res.status(201).json(viewAllFavourites);
   }
@@ -21,7 +24,8 @@ app.get('/favourites', async (req, res) => {
 
 app.post('/add', async (req, res) => {
   console.log("calling /add");
-  const result = await db.addFavourite(req.query.bookName);
+  const {book, userId} = req.body;
+  const result = await db.addFavourite(req.body.bookName, req.body.userId);
   if (result) {
     return res.status(201).json(result);
   }
@@ -31,7 +35,7 @@ app.post('/add', async (req, res) => {
 
 app.delete('/delete', async (req, res) => {
   console.log("calling /delete");
-  const result = await db.removeFavourite(req.query.bookName);
+  const result = await db.removeFavourite(req.body.bookName, req.body.userId);
   if (result) {
     return res.status(201).json(result);
   }
@@ -40,11 +44,9 @@ app.delete('/delete', async (req, res) => {
 });
 
 //use to get a specific favourite book
-app.get('/favourites/name', async (req, res) => {
-  console.log("calling /favourites/name");
-  const viewSpecificFavourite = await db.viewSpecificFavourite(
-    req.query.bookName
-  );
+app.post('/specificFavourite', async (req, res) => {
+  console.log("calling /specificFavourite");
+  const viewSpecificFavourite = await db.viewSpecificFavourite(req.body.params.bookName, req.body.params.userId);
   if (viewSpecificFavourite) {
     return res.status(201).json(viewSpecificFavourite);
   }
@@ -52,9 +54,19 @@ app.get('/favourites/name', async (req, res) => {
   res.status(404);
 });
 
+app.post('/initialCurrentlyReading', async (req, res) => {
+  console.log("calling /initialCurrentlyReading");
+  const result = await db.addCurrentlyReading(req.body.bookName, req.body.userId);
+  if (result) {
+    return res.status(201).json(result);
+  }
+
+  res.status(404);
+});
+
 app.get('/currentlyReading', async (req, res) => {
   console.log("calling /currentlyReading");
-  const currentlyReading = await db.getCurrentlyReading();
+  const currentlyReading = await db.getCurrentlyReading(req.query.userId);
   if (currentlyReading) {
     return res.status(201).json(currentlyReading.BookTitle);
   }
@@ -64,7 +76,7 @@ app.get('/currentlyReading', async (req, res) => {
 
 app.post('/updateCurrentBook', async (req, res) => {
   console.log("calling /updateCurrentBook");
-  const result = await db.updateCurrentlyReading(req.query.title);
+  const result = await db.updateCurrentlyReading(req.body.bookName, req.body.userId);
   if (result) {
     return res.status(201).json(result);
   }

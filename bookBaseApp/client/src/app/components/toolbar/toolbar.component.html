@@ -8,6 +8,8 @@
     <mat-icon>menu</mat-icon>
   </button>
   <a href="/home" class="title">Book Base</a>
+
+  <span class="example-spacer"></span>
   
   <div class="search">
     <input
@@ -22,7 +24,7 @@
     />
   </div>
 
-  <span class="example-spacer"></span>
+
   
   <ng-content></ng-content>
   <button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="">
@@ -33,7 +35,6 @@
       <mat-icon>exit_to_app</mat-icon>
       <span>logout</span>
     </button>
-
   </mat-menu>
 </mat-toolbar>
 

@@ -23,12 +23,12 @@ export class AuthenticateService {
   }
 
   logoutUser() {
-    localStorage.removeItem("sessionUserId");
+    sessionStorage.removeItem("sessionUserId");
     this.nav.hideNav();
     this.router.navigate(['']);
   }
 
   getUserId() {
-    return !!localStorage.getItem("sessionUserId");
+    return !!sessionStorage.getItem("sessionUserId");
   }
 }

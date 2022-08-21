@@ -4,7 +4,7 @@
       mat-button
       class="add-new-fav-btn"
       [title]="'Add new favourite'"
-      (click)="openAddNewDialog()"
+      (click)="openAddNewDialog(userId)"
     >
       New Favourite
       <mat-icon>add</mat-icon>
@@ -18,11 +18,16 @@
       <button
         mat-icon-button
         [title]="'remove'"
-        (click)="openRemoveDialog(book.BookName)"
+        (click)="openRemoveDialog(book.BookName, userId)"
         class="remove-fav"
       >
         <mat-icon>clear</mat-icon>
       </button>
     </li>
   </ul>
+  <ng-container *ngIf="noFavsYet then noFavs"></ng-container>
 </div>
+
+<ng-template #noFavs>
+  <h1 class="noFavs">Currently no favourite books</h1>
+</ng-template>

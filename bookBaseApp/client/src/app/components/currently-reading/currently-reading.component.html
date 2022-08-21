@@ -2,14 +2,27 @@
   <mat-card>
     <h1>Currently Reading</h1>
     <button
+      [disabled]="!!currentBook === false"
       mat-button
       [title]="'Edit current book'"
       class="edit"
-      (click)="openEditDialog()"
+      (click)="openEditDialog(userId)"
     >
       <mat-icon>edit</mat-icon>
     </button>
 
     <p class="book-title">{{ currentBook }}</p>
+    <ng-container *ngIf="!!currentBook === false then addCurrentBook"></ng-container>
   </mat-card>
 </div>
+
+<ng-template #addCurrentBook>
+  <button
+  mat-button
+  [title]="'Add current book'"
+  class="add"
+  (click)="openAddDialog(userId)"
+>
+  <mat-icon>add</mat-icon>
+</button>
+</ng-template>

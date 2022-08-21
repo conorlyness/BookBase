@@ -11,6 +11,7 @@ import { RemoveFavDialogComponent } from '../remove-fav-dialog/remove-fav-dialog
   styleUrls: ['./currently-reading.component.scss'],
 })
 export class CurrentlyReadingComponent implements OnInit {
+  userId:any;
   currentBook: any;
   dialogSelection?: any;
 
@@ -21,17 +22,24 @@ export class CurrentlyReadingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('currenly reading component');
-    this.getCurrentBook();
+    this.userId = sessionStorage.getItem("sessionUserId");
+    this.getCurrentBook(this.userId);
   }
 
-  getCurrentBook() {
-    return this.favouritesService.currentlyReading().subscribe((response) => {
+  getCurrentBook(userId: any) {
+    return this.favouritesService.currentlyReading(userId).subscribe((response) => {
       this.currentBook = response;
+      console.log("resp: ", response);
+      if( this.currentBook === '') {
+        console.log("no book")
+      } else {
+        console.log("current book: ", this.currentBook);
+
+      }
     });
   }
 
-  openEditDialog() {
+  openEditDialog(userId:any) {
     const dialogRef = this.dialog.open(CurrentlyReadingDialogComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -40,14 +48,34 @@ export class CurrentlyReadingComponent implements OnInit {
       if (this.dialogSelection) {
         console.log(this.dialogSelection);
         this.favouritesService
-          .updateCurrentlyReading(this.dialogSelection)
+          .updateCurrentlyReading(this.dialogSelection, userId)
           .subscribe();
 
         this.snackbar.openSnackBar(
           `set ${this.dialogSelection} as current book`,
           ''
         );
-        this.getCurrentBook();
+        this.getCurrentBook(userId);
+      }
+    });
+  }
+
+  openAddDialog(userId:any) {
+    const dialogRef = this.dialog.open(CurrentlyReadingDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.dialogSelection = result;
+      if (this.dialogSelection) {
+        console.log(this.dialogSelection);
+        this.favouritesService.addInitialCurrentlyReading(this.dialogSelection, userId)
+          .subscribe();
+
+        this.snackbar.openSnackBar(
+          `set ${this.dialogSelection} as current book`,
+          ''
+        );
+        this.getCurrentBook(userId);
       }
     });
   }

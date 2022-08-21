@@ -15,66 +15,79 @@ class Database {
     }
   };
 
-  viewAllFavourites = async () => {
+  viewAllFavourites = async (userId) => {
     try {
       const result = await this.connection
         .request()
-        .query(`SELECT* FROM Favourites`);
+        .query(`SELECT BookName
+        FROM dbo.Favourites
+        WHERE UserId = '${userId}';`);
       return result.recordset;
     } catch (error) {
       console.log(error);
     }
   };
 
-  viewSpecificFavourite = async (name) => {
+  viewSpecificFavourite = async (name, userId) => {
     try {
-      const result = await this.connection.request().query(`SELECT *
+      const result = await this.connection.request().query(`SELECT BookName
       FROM dbo.Favourites
-      WHERE BookName = ('${name}');`);
+      WHERE BookName = '${name}' AND UserId = '${userId}';`);
       return result.recordset;
     } catch (error) {
       console.log(error);
     }
   };
 
-  addFavourite = async (name) => {
+  addFavourite = async (name, userId) => {
     try {
       let result = await this.connection
         .request()
-        .query(`INSERT INTO dbo.Favourites (BookName) VALUES ('${name}');`);
+        .query(`Insert into dbo.Favourites (BookName, UserId) Values ('${name}', '${userId}');`);
       return result;
     } catch (error) {
       console.log(error);
     }
   };
 
-  removeFavourite = async (name) => {
+  removeFavourite = async (name, userId) => {
     try {
       let result = await this.connection
         .request()
-        .query(`DELETE FROM dbo.Favourites WHERE BookName = '${name}';`);
+        .query(`DELETE FROM dbo.Favourites where BookName = '${name}' AND UserId='${userId}';`);
       return result;
     } catch (error) {
       console.log(error);
     }
   };
 
-  getCurrentlyReading = async () => {
+  getCurrentlyReading = async (userId) => {
     try {
       let result = this.connection
         .request()
-        .query('select top 1 * from dbo.CurrentlyReading;');
+        .query(`select * from dbo.CurrentlyReading where UserId = ${userId};`);
       return (await result).recordset[0];
     } catch (error) {
       console.log(error);
     }
   };
 
-  updateCurrentlyReading = async (title) => {
+  addCurrentlyReading = async (title, userId) => {
+    try{
+      let result = this.connection
+      .request()
+      .query(`Insert into dbo.CurrentlyReading values ('${title}', '${userId}');`);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  updateCurrentlyReading = async (title, userId) => {
     try {
       let result = this.connection
         .request()
-        .query(`UPDATE dbo.CurrentlyReading SET BookTitle='${title}';`);
+        .query(`UPDATE dbo.CurrentlyReading SET BookTitle='${title}' WHERE UserId = '${userId}';`);
       return result;
     } catch (error) {
       console.log(error);
@@ -88,7 +101,7 @@ class Database {
         .query(`INSERT INTO dbo.Users VALUES
         ('${user.firstName}', '${user.lastName}', '${user.email}', '${user.password}', ${0})`);
       return newUser;
- 
+
     } catch (error) {
       console.log(error)
     }

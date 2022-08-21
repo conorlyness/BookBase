@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
   matIcon: string = 'list';
   tooltip: string = 'change to list view';
   isLoading: boolean = true;
+  userId: any;
 
   //used for dynamic component loading
   @ViewChild('dynamic', { read: ViewContainerRef })
@@ -58,6 +59,7 @@ export class HomeComponent implements OnInit {
   saleInterval!:any
 
   ngOnInit(): void {
+    this.userId = sessionStorage.getItem("sessionUserId");
     this.getPopularBooksByGenre('non fiction');
     this.salesStatus$.subscribe({
       next(value) {
@@ -88,10 +90,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addToFav(name: string) {
+  addToFav(name: string, userId: any) {
     this.isFav = true;
     try{
-      this.favouritesService.addFavourite(name).subscribe(
+      this.favouritesService.addFavourite(name, userId).subscribe(
         (response: any) => {
           console.log(response);
         });

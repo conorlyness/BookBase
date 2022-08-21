@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           this.isValidLogin = value;
           if (this.isValidLogin.userId) {
               this.snackbarService.openSnackBar("Login Successful, welcome back","");
-              localStorage.setItem("sessionUserId", this.isValidLogin.userId)
+              sessionStorage.setItem("sessionUserId", this.isValidLogin.userId)
               //now that its a valid login we can show the navbar
               this.nav.showNav();
               this.router.navigate(['/home']);

@@ -3,8 +3,9 @@
 }
 
 .search {
-  padding-left: 690px;
+  padding-right: 50px;
   font-size: large;
+
 }
 
 .search input {
@@ -17,7 +18,7 @@
   color: rgb(255, 255, 255);
   font-size: 0.8em;
   text-align: center;
-  width: 400px;
+  width: 300px;
 }
 
 .profileMenu {
@@ -89,3 +90,9 @@ mat-icon {
     font-size: 18px;
   }
 }
+
+::ng-deep .my-class {
+  padding: 0 10px!important;
+  max-width: none !important;
+}
+

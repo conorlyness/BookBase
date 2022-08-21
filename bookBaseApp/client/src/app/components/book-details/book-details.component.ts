@@ -21,6 +21,7 @@ export class BookDetailsComponent implements OnInit {
   bookSub!: Subscription;
   isFav: boolean = false;
   dialogSelection?: any;
+  userId:any;
   @ViewChild('fav') private elFavButton = {} as ElementRef;
 
   constructor(
@@ -32,20 +33,21 @@ export class BookDetailsComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.userId = sessionStorage.getItem("sessionUserId");
     this.routeSub = this.ActivatedRoute.params.subscribe(
       async (params: Params) => {
         this.bookId = params['id'];
-        this.getBookDetails(this.bookId);
+        this.getBookDetails(this.bookId, this.userId);
       }
     );
   }
 
-  getBookDetails(id: number): void {
+  getBookDetails(id: number, userId: any): void {
     this.bookSub = this.bookService
       .getBookById(id)
       .subscribe((response: bookById) => {
         this.book = response;
-        this.isBookFavourite(this.book.name);
+        this.isBookFavourite(this.book.name, userId);
       });
   }
 
@@ -53,11 +55,11 @@ export class BookDetailsComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  addToFav(name: string) {
+  addToFav(name: string, userId: any) {
     if (this.isFav == true) {
-      this.openDialog();
+      this.openDialog(userId);
     } else {
-      this.favouritesService.addFavourite(name).subscribe((response: any) => {
+      this.favouritesService.addFavourite(name, userId).subscribe((response: any) => {
         console.log(response);
       });
       this.isFav = true;
@@ -66,9 +68,9 @@ export class BookDetailsComponent implements OnInit {
     }
   }
 
-  isBookFavourite(bookName: string) {
+  isBookFavourite(bookName: string, userId: any) {
     this.favouritesService
-      .isBookInFavourites(bookName)
+      .isBookInFavourites(bookName, userId)
       .subscribe(async (response: any) => {
         if (response.length > 0) {
           this.isFav = true;
@@ -88,7 +90,7 @@ export class BookDetailsComponent implements OnInit {
     }
   }
 
-  openDialog(): void {
+  openDialog(userId: any): void {
     const dialogRef = this.dialog.open(RemoveFavDialogComponent, {
       data: { bookName: this.book.name },
     });
@@ -99,7 +101,7 @@ export class BookDetailsComponent implements OnInit {
       if (this.dialogSelection) {
         //call service to remove book from favourties list
         this.favouritesService
-          .removeFavourite(this.dialogSelection.bookName)
+          .removeFavourite(this.dialogSelection.bookName, userId)
           .subscribe((response: any) => {
             console.log(response);
           });
