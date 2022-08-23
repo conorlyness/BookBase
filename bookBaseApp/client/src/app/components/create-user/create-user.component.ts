@@ -17,6 +17,7 @@ export class CreateUserComponent implements OnInit {
   lastName = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  hide:boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,9 +68,9 @@ export class CreateUserComponent implements OnInit {
       //add some logic here, make a call to the auth service and a func to check if there is a user in the db with this email already, if so then 
       //output an error message in a snackbar "account with this email already exists"
       this.authService.createUser(user).subscribe({});
-      }
       this.snackbarService.openSnackBar("Account successfully created","")
       this.router.navigate(['']);
+      }
     }
 
   }
