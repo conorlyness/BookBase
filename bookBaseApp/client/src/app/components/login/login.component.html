@@ -9,15 +9,18 @@
         <form>
             <h4>Login</h4>
             <div class="form-group">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="standard">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="email@example.com" [formControl]="email" required>
                   </mat-form-field>
             </div>
             <div class="form-group">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="standard">
                     <mat-label>Password</mat-label>
-                    <input matInput placeholder="Password" [formControl]="password" required>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" [formControl]="password" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
                   </mat-form-field>
             </div>
             
