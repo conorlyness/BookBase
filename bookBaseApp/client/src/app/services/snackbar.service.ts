@@ -11,6 +11,8 @@ export class SnackbarService {
   openSnackBar(message: string, action: string, classType?: string) {
     let config = new MatSnackBarConfig();
     config.duration = 2000;
+    config.verticalPosition = 'bottom';
+    config.horizontalPosition = 'right';
 
     if (typeof(classType) !== 'undefined') {
       if (classType === 'success') {
