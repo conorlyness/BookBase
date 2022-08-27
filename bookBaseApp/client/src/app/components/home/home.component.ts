@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit {
         (response: any) => {
           console.log(response);
         });
-      this.snackbar.openSnackBar(`Added ${name} to favourites`, '');
+      this.snackbar.openSnackBar(`Added ${name} to favourites`, '', 'success');
     } catch (err)
     {
       console.log("error adding to favourite")

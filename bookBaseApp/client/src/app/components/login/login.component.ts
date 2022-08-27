@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (!this.email.valid || !this.password.valid) {
       console.log("error")
-      this.snackbarService.openSnackBar("Invalid fields, please retry","")
+      this.snackbarService.openSnackBar("Invalid fields, please retry","", 'error')
     } else {
       console.log("form submitted: ", this.email.value, this.password.value);
       const user = {email: this.email.value, password: this.password.value}
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.authService.loginUser(user).subscribe((value) => {
           this.isValidLogin = value;
           if (this.isValidLogin.userId) {
-              this.snackbarService.openSnackBar("Login Successful, welcome back","");
+              this.snackbarService.openSnackBar("Login Successful, welcome back","", 'success');
               sessionStorage.setItem("sessionUserId", this.isValidLogin.userId)
               //now that its a valid login we can show the navbar
               this.nav.showNav();
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             }
             else {
               this.password.reset();
-              this.snackbarService.openSnackBar("Invalid credentials, please retry","");
+              this.snackbarService.openSnackBar("Invalid credentials, please retry","", 'error');
             }
 
         });

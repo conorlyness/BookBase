@@ -63,7 +63,7 @@ export class BookDetailsComponent implements OnInit {
         console.log(response);
       });
       this.isFav = true;
-      this.snackbar.openSnackBar(`Added ${name} to favourites`, '');
+      this.snackbar.openSnackBar(`Added ${name} to favourites`, '', 'success');
       this.setFavouriteIcon(true);
     }
   }
@@ -108,7 +108,7 @@ export class BookDetailsComponent implements OnInit {
 
         this.snackbar.openSnackBar(
           `Removed ${this.dialogSelection.bookName} from favourites`,
-          ''
+          '', 'success'
         );
 
         //set the favourite icon to false now that it has been removed from favourites

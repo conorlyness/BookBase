@@ -53,7 +53,7 @@ export class CurrentlyReadingComponent implements OnInit {
 
         this.snackbar.openSnackBar(
           `set ${this.dialogSelection} as current book`,
-          ''
+          '', 'success'
         );
         this.getCurrentBook(userId);
       }
@@ -73,7 +73,7 @@ export class CurrentlyReadingComponent implements OnInit {
 
         this.snackbar.openSnackBar(
           `set ${this.dialogSelection} as current book`,
-          ''
+          '', 'success'
         );
         this.getCurrentBook(userId);
       }

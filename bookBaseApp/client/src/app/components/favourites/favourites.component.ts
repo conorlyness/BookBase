@@ -34,7 +34,7 @@ export class FavouritesComponent implements OnInit {
       console.log(response);
     });
 
-    this.snackbar.openSnackBar(`Removed ${name} from favourites`, '');
+    this.snackbar.openSnackBar(`Removed ${name} from favourites`, '', 'success');
     this.getAllFavouriteBooks(this.userId);
   }
 
@@ -66,7 +66,7 @@ export class FavouritesComponent implements OnInit {
 
         this.snackbar.openSnackBar(
           `Removed ${this.dialogSelection.bookName} from favourites`,
-          ''
+          '', 'success'
         );
         this.getAllFavouriteBooks(this.userId);
       }
@@ -85,7 +85,7 @@ export class FavouritesComponent implements OnInit {
 
         this.snackbar.openSnackBar(
           `Added ${this.dialogSelection} to favourites`,
-          ''
+          '', 'success'
         );
         this.getAllFavouriteBooks(this.userId);
       }
