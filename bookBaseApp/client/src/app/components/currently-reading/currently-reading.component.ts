@@ -28,12 +28,11 @@ export class CurrentlyReadingComponent implements OnInit {
 
   getCurrentBook(userId: any) {
     return this.favouritesService.currentlyReading(userId).subscribe((response) => {
-      this.currentBook = response;
       console.log("resp: ", response);
       if( this.currentBook === '') {
         console.log("no book")
       } else {
-        console.log("current book: ", this.currentBook);
+        this.currentBook = response;
 
       }
     });
