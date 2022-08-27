@@ -63,6 +63,28 @@ pagination-controls {
   padding-top: 5px;
 }
 
+.default-snackbar {
+  color: black !important;
+  background: rgb(255, 255, 255) !important;
+}
+
+.success-snackbar {
+  color: black !important;
+  background-color: rgb(153,204,51) !important;
+
+}
+
+.warning-snackbar {
+  color: black !important;
+  background-color: rgb(255,204,0) !important;
+
+}
+
+.error-snackbar {
+  color: white !important;
+  background-color: rgb(204,51,0) !important;
+}
+
 // /* hide scrollbar but allow scrolling */
 // body {
 //   -ms-overflow-style: none; /* for Internet Explorer, Edge */
