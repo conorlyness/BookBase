@@ -22,6 +22,11 @@ export class MostPopularMonthAndYearComponent implements OnInit {
   sortMonth: string = '';
   sortYear: string = '';
   selectedFutureDate: boolean = false;
+  isLoading: boolean = true;
+  tooltip: string = 'change to list view';
+  matIcon: string = 'list';
+  defaultView: boolean = true;
+  public payload?: any;
 
   ngOnInit(): void {
     this.getMostPopularMonthYear(this.currentMonth, this.currentYear);
@@ -41,10 +46,11 @@ export class MostPopularMonthAndYearComponent implements OnInit {
         .getMostPopularByMonthYear(month as string, year)
         .subscribe({
           next: (response) => {
-            this.books = response;
-            console.log(this.books);
+            this.payload = response;
+            // console.log(this.books);
             this.sortMonth = '';
             this.sortYear = '';
+            this.isLoading = false;
           },
         });
     }
@@ -54,4 +60,16 @@ export class MostPopularMonthAndYearComponent implements OnInit {
   openBookDetails(id: string): void {
     this.router.navigate(['details', id]);
   }
+
+    //used to change the view on the home page, users can either change from the default grid view to a list view instead
+    changeView() {
+      this.defaultView = !this.defaultView;
+      if (this.defaultView) {
+        this.matIcon = 'list'
+        this.tooltip = 'change to list view'
+      } else {
+        this.matIcon = 'grid_on'
+        this.tooltip = 'change to grid view'
+      }
+    }
 }

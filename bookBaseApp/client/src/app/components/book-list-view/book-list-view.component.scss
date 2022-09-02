@@ -35,5 +35,19 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
+    margin: 0 auto;
     }
+
+    &-rank {
+        color: #fff;
+        font-weight: 700;
+        font-size: 18px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: left;
+      }
+
+      &-name-and-rank{
+        display: flex;
+      }
 }

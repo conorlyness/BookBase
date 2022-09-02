@@ -29,35 +29,36 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <ng-container
-    *ngIf="sortMonth != '' && sortYear != ''; then searchBooksBtn"
-  ></ng-container>
-  <ng-container *ngIf="!selectedFutureDate; else futureDateError">
-    <div class="books">
-      <ng-container *ngFor="let book of books">
-        <div
-          class="book"
-          [title]="book.name"
-          (click)="openBookDetails(book.book_id)"
-        >
-          <div class="book-thumbnail-container">
-            <img
-              *ngIf="book.cover"
-              src="{{ book.cover }}"
-              alt="thumbnail"
-              class="book-thumbnail"
-            />
-            <p *ngIf="!book.cover">No Image found</p>
-          </div>
-          <div class="book-description-container">
-            <p class="book-name">{{ book.name }}</p>
-            <p class="book-rank">Rank: {{ book.position }}</p>
-          </div>
-        </div>
-      </ng-container>
+
+  <ng-container *ngIf="!isLoading">
+    <div class="changeViewContainer">
+      <button title="{{tooltip}}" mat-button class="changeViewBtn" (click)="changeView()"><mat-icon class="icon">{{matIcon}}</mat-icon></button>
     </div>
   </ng-container>
-</div>
+
+  <ng-container *ngIf="isLoading" >
+    <div class="loadingSpinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngIf="sortMonth != '' && sortYear != '' && !isLoading; then searchBooksBtn"
+  ></ng-container>
+
+
+
+  <ng-container *ngIf="defaultView && !isLoading">
+    <ng-container *ngIf="!selectedFutureDate; else futureDateError">
+      <app-book-grid-view [popularBooks]="payload" [booksPerPage]="15"></app-book-grid-view>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="!defaultView && !isLoading">
+    <ng-container *ngIf="!selectedFutureDate; else futureDateError">
+    <app-book-list-view [popularBooks]="payload" [booksPerPage]="15"></app-book-list-view>
+  </ng-container>
+  </ng-container>
 
 <ng-template #searchBooksBtn>
   <div class="execute-search-btn-div">
@@ -72,7 +73,7 @@
 </ng-template>
 
 <ng-template #futureDateError>
-  <h1>
+  <h1 class="invalid-date">
     The most popular books cannot be fetched as the date provided is in the
     future.
   </h1>

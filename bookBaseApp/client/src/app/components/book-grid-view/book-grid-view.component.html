@@ -2,7 +2,7 @@
     <ng-container
       *ngFor="
         let book of popularBooks
-          | paginate: { itemsPerPage: 10, currentPage: p }
+          | paginate: { itemsPerPage: booksPerPage, currentPage: p }
       "
     >
       <div
@@ -21,6 +21,9 @@
         </div>
         <div class="book-description">
           <p class="book-name">{{ book.name }}</p>
+          <ng-container *ngIf="book.position">
+            <p class="book-rank">Rank: {{ book.position }}</p>
+          </ng-container>
         </div>
       </div>
     </ng-container>

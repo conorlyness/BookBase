@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class BookListViewComponent implements OnInit {
 
   @Input() popularBooks:any;
+    //p is the page number for pagination
   @Input() p!: number;
+  @Input() booksPerPage:number = 10;
 
   constructor(private router: Router,) { }
 
