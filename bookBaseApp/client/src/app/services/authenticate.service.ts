@@ -24,6 +24,7 @@ export class AuthenticateService {
 
   logoutUser() {
     sessionStorage.removeItem("sessionUserId");
+    sessionStorage.removeItem("sessionDisplayName");
     this.nav.hideNav();
     this.router.navigate(['']);
   }

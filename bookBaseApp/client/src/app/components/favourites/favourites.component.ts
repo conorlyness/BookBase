@@ -13,8 +13,9 @@ import { RemoveFavDialogComponent } from '../remove-fav-dialog/remove-fav-dialog
 export class FavouritesComponent implements OnInit {
   books?: any;
   dialogSelection?: any;
-  userId:any;
+  userId: any;
   noFavsYet?: boolean = false;
+  displayName: any;
 
   constructor(
     private favouritesService: FavouriteBooksService,
@@ -24,6 +25,7 @@ export class FavouritesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem("sessionUserId");
+    this.displayName = sessionStorage.getItem("sessionDisplayName")?.concat("'s");
     this.getAllFavouriteBooks(this.userId);
 
   }

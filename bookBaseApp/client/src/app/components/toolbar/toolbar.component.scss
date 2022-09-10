@@ -22,7 +22,9 @@
 }
 
 .profileMenu {
-  transform: scale(2);
+  font-size: 28px;
+  vertical-align: top !important;
+  color: white;
 }
 
 mat-toolbar {
@@ -43,6 +45,11 @@ input::placeholder {
 
 mat-icon {
   color: white;
+}
+
+.displayName {
+  background-color: rgb(42, 3, 78);
+  box-shadow: 2px 1px rgb(255 255 255);
 }
 
 .menu-button {

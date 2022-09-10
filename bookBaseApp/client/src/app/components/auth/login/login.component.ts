@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   isValidLogin!: any;
   hide: boolean = true;
+  userDisplayName: string = '';
 
 
   constructor(    
@@ -42,8 +43,14 @@ export class LoginComponent implements OnInit {
       
         this.authService.loginUser(user).subscribe((value) => {
           this.isValidLogin = value;
-          if (this.isValidLogin.userId) {
-              this.snackbarService.openSnackBar("Login Successful, welcome back","", 'success');
+          if (this.isValidLogin.userId && this.isValidLogin.firstName) {
+              //get the users display name
+              const unCapitalizedUserName = this.isValidLogin.firstName;
+              //take the users display name and ensure that the first character is capitalized
+              this.userDisplayName = unCapitalizedUserName.charAt(0).toUpperCase() + unCapitalizedUserName.slice(1);
+
+              this.snackbarService.openSnackBar(`Login Successful, welcome back ${this.userDisplayName}`,"", 'success');
+              sessionStorage.setItem('sessionDisplayName', this.userDisplayName);
               sessionStorage.setItem("sessionUserId", this.isValidLogin.userId)
               //now that its a valid login we can show the navbar
               this.nav.showNav();

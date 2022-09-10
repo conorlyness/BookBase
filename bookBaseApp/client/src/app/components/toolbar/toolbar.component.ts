@@ -29,12 +29,17 @@ export class ToolbarComponent implements OnInit {
   @Output() searchInput = new EventEmitter<string>();
   search?: string;
   navOpen?: boolean = false;
+  displayNameInitial?: string;
 
   //using view child decorator
   //@ViewChild() with Template Variable using ElementRef to access Native Element
   @ViewChild('sideNav') private elSideNav = {} as ElementRef;
+  
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.createDisplayNameInitial();
+  }
 
   onSubmit(value: string) {
     // this.searchInput.emit(value);
@@ -75,5 +80,10 @@ export class ToolbarComponent implements OnInit {
 
   logout() {
     this.authService.logoutUser();
+  }
+
+  createDisplayNameInitial() {
+    const displayName = sessionStorage.getItem('sessionDisplayName')
+    this.displayNameInitial = displayName?.charAt(0);
   }
 }

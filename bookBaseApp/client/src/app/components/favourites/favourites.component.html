@@ -11,7 +11,7 @@
     </button>
   </div>
   <app-currently-reading></app-currently-reading>
-  <h1 class="fav-books">Favourite books</h1>
+  <h1 class="fav-books">{{displayName}} Favourites</h1>
   <ul *ngFor="let book of books">
     <li>
       {{ book.BookName }}

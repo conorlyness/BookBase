@@ -27,8 +27,8 @@
 
   
   <ng-content></ng-content>
-  <button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="">
-    <mat-icon class="profileMenu">account_circle</mat-icon>
+  <button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="" class="displayName">
+    <span class="profileMenu">{{displayNameInitial}}</span>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="logout()">
