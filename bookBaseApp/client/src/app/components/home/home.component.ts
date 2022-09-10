@@ -8,14 +8,12 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { BookService } from 'src/app/services/book.service';
 import { FavouriteBooksService } from 'src/app/services/favourite-books.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { VersionInfoComponent } from '../version-info/version-info.component';
-import { BookGridViewComponent } from '../book-grid-view/book-grid-view.component';
-import { BookListViewComponent } from '../book-list-view/book-list-view.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

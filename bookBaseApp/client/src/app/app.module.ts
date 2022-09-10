@@ -34,13 +34,13 @@ import { CurrentlyReadingDialogComponent } from './components/currently-reading-
 import { VersionInfoComponent } from './components/version-info/version-info.component';
 import { VersionInfoDialogComponent } from './components/version-info-dialog/version-info-dialog.component';
 import { MostPopularMonthAndYearComponent } from './components/most-popular-month-and-year/most-popular-month-and-year.component';
-import { BookGridViewComponent } from './components/book-grid-view/book-grid-view.component';
-import { BookListViewComponent } from './components/book-list-view/book-list-view.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatListModule} from '@angular/material/list';
-import { CreateUserComponent } from './components/create-user/create-user.component';
-import { LoginComponent } from './components/login/login.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatListModule } from '@angular/material/list';
 import { AuthenticateService } from './services/authenticate.service';
+import { CreateUserModule } from './components/auth/create-user/create-user.module';
+import { LoginModule } from './components/auth/login/login.module';
+import { ViewsModule } from './components/views/views.module';
+
 
 @NgModule({
   declarations: [
@@ -57,10 +57,6 @@ import { AuthenticateService } from './services/authenticate.service';
     VersionInfoComponent,
     VersionInfoDialogComponent,
     MostPopularMonthAndYearComponent,
-    BookGridViewComponent,
-    BookListViewComponent,
-    CreateUserComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +81,11 @@ import { AuthenticateService } from './services/authenticate.service';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatListModule
+    MatListModule,
+    LoginModule,
+    CreateUserModule,
+    ViewsModule,
+
   ],
   providers: [AuthenticateService],
   bootstrap: [AppComponent],
