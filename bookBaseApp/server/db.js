@@ -111,7 +111,7 @@ class Database {
     try {
       const result = this.connection
       .request()
-      .query(`SELECT UserId FROM dbo.Users WHERE Email = '${user.email}' AND Password = '${user.password}';`);
+      .query(`SELECT UserId, FirstName FROM dbo.Users WHERE Email = '${user.email}' AND Password = '${user.password}';`);
       let results = JSON.stringify(await result);
       let record = JSON.parse(results);
 

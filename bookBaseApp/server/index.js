@@ -111,7 +111,7 @@ app.post('/login', async (req, res) => {
   
   const user = await db.loginUser(req.body);
   if (user) {
-    return res.status(201).json({ userId: user.UserId });
+    return res.status(201).json({ userId: user.UserId, firstName: user.FirstName });
   }
 
   res.status(403).json({ message: "forbidden" });
