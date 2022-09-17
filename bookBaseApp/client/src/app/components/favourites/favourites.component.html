@@ -10,6 +10,13 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
+
+  <ng-container *ngIf="isLoading">
+    <div class="loadingSpinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-container>
+
   <app-currently-reading></app-currently-reading>
   <h1 class="fav-books">{{displayName}} Favourites</h1>
   <ul *ngFor="let book of books">

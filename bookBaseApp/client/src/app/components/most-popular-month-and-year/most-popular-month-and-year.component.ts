@@ -36,6 +36,7 @@ export class MostPopularMonthAndYearComponent implements OnInit {
     if (year === '2022' && month > parseInt(this.currentMonth)) {
       this.selectedFutureDate = true;
     } else {
+      this.isLoading = true;
       this.selectedFutureDate = false;
       this.snackBarService.openSnackBar(
         `showing results for ${month}/${year} `,
@@ -47,7 +48,6 @@ export class MostPopularMonthAndYearComponent implements OnInit {
         .subscribe({
           next: (response) => {
             this.payload = response;
-            // console.log(this.books);
             this.sortMonth = '';
             this.sortYear = '';
             this.isLoading = false;
@@ -61,15 +61,15 @@ export class MostPopularMonthAndYearComponent implements OnInit {
     this.router.navigate(['details', id]);
   }
 
-    //used to change the view on the home page, users can either change from the default grid view to a list view instead
-    changeView() {
-      this.defaultView = !this.defaultView;
-      if (this.defaultView) {
-        this.matIcon = 'list'
-        this.tooltip = 'change to list view'
-      } else {
-        this.matIcon = 'grid_on'
-        this.tooltip = 'change to grid view'
-      }
+  //used to change the view on the home page, users can either change from the default grid view to a list view instead
+  changeView() {
+    this.defaultView = !this.defaultView;
+    if (this.defaultView) {
+      this.matIcon = 'list';
+      this.tooltip = 'change to list view';
+    } else {
+      this.matIcon = 'grid_on';
+      this.tooltip = 'change to grid view';
     }
+  }
 }

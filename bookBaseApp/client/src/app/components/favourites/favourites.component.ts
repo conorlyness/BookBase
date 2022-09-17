@@ -16,6 +16,7 @@ export class FavouritesComponent implements OnInit {
   userId: any;
   noFavsYet?: boolean = false;
   displayName: any;
+  isLoading: boolean = true;
 
   constructor(
     private favouritesService: FavouriteBooksService,
@@ -24,30 +25,39 @@ export class FavouritesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userId = sessionStorage.getItem("sessionUserId");
-    this.displayName = sessionStorage.getItem("sessionDisplayName")?.concat("'s");
+    this.userId = sessionStorage.getItem('sessionUserId');
+    this.displayName = sessionStorage
+      .getItem('sessionDisplayName')
+      ?.concat("'s");
     this.getAllFavouriteBooks(this.userId);
-
   }
 
   removeFav(name: string, userId: any) {
     console.log(`calling service to remove `, name);
-    this.favouritesService.removeFavourite(name, userId).subscribe((response: any) => {
-      console.log(response);
-    });
+    this.favouritesService
+      .removeFavourite(name, userId)
+      .subscribe((response: any) => {
+        console.log(response);
+      });
 
-    this.snackbar.openSnackBar(`Removed ${name} from favourites`, '', 'success');
+    this.snackbar.openSnackBar(
+      `Removed ${name} from favourites`,
+      '',
+      'success'
+    );
     this.getAllFavouriteBooks(this.userId);
   }
 
   getAllFavouriteBooks(userId: any) {
-    console.log("inside get all favourite books with user id of: ", this.userId)
+    this.isLoading = true;
     this.favouritesService.getAllFavourites(userId).subscribe({
       next: (response) => {
         this.books = response;
+        this.isLoading = false;
         console.log(this.books);
         if (this.books.length === 0) {
           this.noFavsYet = true;
+          this.isLoading = false;
         } else {
           this.noFavsYet = false;
         }
@@ -68,7 +78,8 @@ export class FavouritesComponent implements OnInit {
 
         this.snackbar.openSnackBar(
           `Removed ${this.dialogSelection.bookName} from favourites`,
-          '', 'success'
+          '',
+          'success'
         );
         this.getAllFavouriteBooks(this.userId);
       }
@@ -83,11 +94,14 @@ export class FavouritesComponent implements OnInit {
       this.dialogSelection = result;
       if (this.dialogSelection) {
         console.log(this.dialogSelection);
-        this.favouritesService.addFavourite(this.dialogSelection, userId).subscribe();
+        this.favouritesService
+          .addFavourite(this.dialogSelection, userId)
+          .subscribe();
 
         this.snackbar.openSnackBar(
           `Added ${this.dialogSelection} to favourites`,
-          '', 'success'
+          '',
+          'success'
         );
         this.getAllFavouriteBooks(this.userId);
       }
