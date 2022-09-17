@@ -23,6 +23,7 @@ export class BookSearchComponent implements OnInit {
   bookSub!: Subscription;
   bookName!: string;
   p: number = 1;
+  isLoading: boolean = true;
 
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
@@ -32,10 +33,13 @@ export class BookSearchComponent implements OnInit {
   }
 
   getSearchResults(bookName: string): void {
+    this.isLoading = true;
     this.bookService.getBooksByName(bookName).subscribe({
       next: (response) => {
         console.log(response);
+        this.isLoading = false;
         this.searchedBook = response;
+
         console.log(this.searchedBook);
       },
     });

@@ -1,6 +1,8 @@
+<h1 class="showSearchTermTitle">Search results for: {{bookName}}</h1>
 <div class="all-search-content">
-  <div class="books" *ngIf="searchedBook; else noResults">
-    <ng-container
+  <div class="books" *ngIf="searchedBook && !isLoading">
+    <ng-container *ngIf="searchedBook.length > 0 else noResults">
+      <ng-container
       *ngFor="
         let book of searchedBook
           | paginate: { itemsPerPage: 10, currentPage: p }
@@ -22,10 +24,21 @@
         </div>
       </div>
     </ng-container>
+    </ng-container>
+   
   </div>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <ng-container *ngIf="!isLoading && searchedBook.length > 0">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ng-container>
+
 
   <ng-template #noResults>
     <h1 class="no-results">No results matching search.</h1>
   </ng-template>
+
+  <ng-container *ngIf="isLoading">
+    <div class="loadingSpinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-container>
 </div>
