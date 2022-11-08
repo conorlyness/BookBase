@@ -5,7 +5,8 @@ Project using the HAPI Books API. It gives information about thousands of books 
 Sql will need to be installed locally and you will need to add the databases username and password into the .env file.
 
 Copy the contents of this text file and execute this as a new sql query in sql server management studio to create the DB along with its required tables:  
-[SQL_Db_Creation.txt](https://github.com/conorlyness/BookBase/files/9965282/SQL_Db_Creation.txt)
+[SQL_Db_Creation.txt](https://github.com/conorlyness/BookBase/files/9965300/SQL_Db_Creation.txt)
+
 
 
 <ul>Starting the server
